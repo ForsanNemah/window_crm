@@ -282,17 +282,13 @@
       <li class="nav-item">
         <a class="nav-link " href="{{route('persons.index')}}">
           <i class="bi bi-grid"></i>
-          <span>person</span>
+          <span>Leads</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
 
 
-      <li class="nav-item">
-        <a class="nav-link " href="{{route('persons.index')}}">
-          <i class="bi bi-grid"></i>
-          <span>orgnization</span>
-        </a>
+    
       </li>
       
      <!-- End Tables Nav -->

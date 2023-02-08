@@ -8,7 +8,7 @@
                 <h2> </h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('persons.create') }}"> Create New Person</a>
+                <a class="btn btn-success" href="{{ route('persons.create') }}"> Create New Lead</a>
             </div>
         </div>
     </div>
