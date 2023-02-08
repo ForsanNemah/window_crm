@@ -35,24 +35,11 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name:</strong>
-                <input type="text" name="name" class="form-control" placeholder="Name">
+                <input type="text" name="name" class="form-control" placeholder="Name" required>
             </div>
         </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Title:</strong>
-                
-                <select name="title"  >
-                    <option value="Mr."> Mr.</option>
-                    <option value="Ms.">Ms.</option>
-                    <option value="Mrs.">Mrs.</option>
-                    <option value="Eng.">Eng.</option>
-                    <option value="Dr.">Dr.</option>
-                  </select>
-            </div>
-        </div>
-
+      
 
 
         
@@ -61,7 +48,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Phone Number:</strong>
-                <input type="number" name="phn" class="form-control"  >
+                <input type="number" name="phn" class="form-control" required >
             </div>
         </div>
 
@@ -69,7 +56,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Phone Number 2:</strong>
-                <input type="text" name="phn2" class="form-control"  >
+                <input type="text" name="phn2" class="form-control"  required>
             </div>
         </div>
 
@@ -93,7 +80,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Email:</strong>
-                <input type="text" name="email" class="form-control" placeholder="Name">
+                <input type="text" name="email" class="form-control" required>
             </div>
         </div>
 
@@ -102,7 +89,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Address:</strong>
-                <input type="text" name="address" class="form-control" >
+                <input type="text" name="address" class="form-control"  required>
             </div>
         </div>
 
@@ -111,7 +98,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Area:</strong>
-                <input type="text" name="area" class="form-control"  >
+                <input type="text" name="area" class="form-control" required >
             </div>
         </div>
 
@@ -129,7 +116,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>City:</strong>
-                <input type="text" name="city" class="form-control" >
+                <input type="text" name="city" class="form-control" required >
             </div>
         </div>
 
@@ -139,7 +126,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Time to Call:</strong>
-                <input type="time" name="time_to_call" class="form-control" >
+                <input type="time" name="time_to_call" class="form-control"  >
             </div>
         </div>
 
@@ -179,7 +166,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Mony:</strong>
-                <input type="number" name="mony" class="form-control" >
+                <input type="number" name="mony" class="form-control"  required>
             </div>
         </div>
 

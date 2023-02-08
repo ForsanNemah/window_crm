@@ -32,7 +32,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Name:</strong>
-                    <input type="text" name="name" class="form-control" value="{{$person->name}}">
+                    <input type="text" name="name" class="form-control" value="{{$person->name}}" required>
                 </div>
             </div>
     
@@ -59,7 +59,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Phone Number:</strong>
-                    <input type="number" name="phn" class="form-control"  value="{{$person->phn}}" >
+                    <input type="number" name="phn" class="form-control"  value="{{$person->phn}}"  required>
                 </div>
             </div>
     
@@ -67,7 +67,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Phone Number 2:</strong>
-                    <input type="text" name="phn2" class="form-control" value="{{$person->phn2}}"  >
+                    <input type="text" name="phn2" class="form-control" value="{{$person->phn2}}" required >
                 </div>
             </div>
     
@@ -92,7 +92,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Email:</strong>
-                    <input type="text" name="email" class="form-control" value="{{$person->email}}">
+                    <input type="text" name="email" class="form-control" value="{{$person->email}}" required>
                 </div>
             </div>
     
@@ -101,7 +101,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Address:</strong>
-                    <input type="text" name="address" class="form-control" value="{{$person->address}}" >
+                    <input type="text" name="address" class="form-control" value="{{$person->address}}"  required>
                 </div>
             </div>
     
@@ -110,7 +110,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Area:</strong>
-                    <input type="text" name="area" class="form-control"  value="{{$person->area}}" >
+                    <input type="text" name="area" class="form-control"  value="{{$person->area}}" required >
                 </div>
             </div>
     
@@ -129,7 +129,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>City:</strong>
-                    <input type="text" name="city" class="form-control" value="{{$person->city}}" >
+                    <input type="text" name="city" class="form-control" value="{{$person->city}}" required >
                 </div>
             </div>
     
@@ -139,7 +139,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Time to Call:</strong>
-                    <input type="time" name="time_to_call" class="form-control" value="{{$person->time_to_call}}" >
+                    <input type="time" name="time_to_call" class="form-control" value="{{$person->time_to_call}}" required >
                 </div>
             </div>
     
@@ -179,7 +179,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Mony:</strong>
-                    <input type="number" name="mony" class="form-control" value="{{$person->mony}}" >
+                    <input type="number" name="mony" class="form-control" value="{{$person->mony}}" required >
                 </div>
             </div>
     
@@ -187,7 +187,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Note:</strong>
-                    <textarea class="form-control" style="height:150px" name="note"   >
+                    <textarea class="form-control" style="height:150px" name="note"  required  >
                     
                     
                   {{$person->note}} 
