@@ -77,7 +77,8 @@ class PersonController extends Controller
     public function edit(person $person)
     {
         //
-        return view('admin.persons.edit',compact('person'));
+       // echo $person;
+       return view('admin.persons.edit',compact('person'));
     }
 
     /**
