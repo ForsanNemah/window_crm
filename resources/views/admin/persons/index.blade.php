@@ -20,6 +20,25 @@
         </div>
     @endif
    
+
+
+  
+
+
+<br>
+
+<form action="{{ route('persons_search') }}" method="GET">
+    @csrf
+
+    <div class="input-group">
+        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" name="search_key" />
+        <button type="submit" class="btn btn-outline-primary">search</button>
+      </div>
+
+</form>
+
+<br>
+
     <table class="table table-bordered">
         <tr>
             <th>No</th>
@@ -64,11 +83,16 @@
                    
     
                     <a class="btn btn-primary" href="{{ route('persons.edit',$person->id) }}">Edit</a>
-   
+               
+   <br>
                     @csrf
                     @method('DELETE')
+                    <!--
       
                     <button type="submit" onclick="return confirm('Sure Want Delete?')"  class="btn btn-danger">Delete</button>
+                    -->
+                    <br>
+                    <a class="btn btn-primary" href="{{ route('persons.edit',$person->id) }}">Follow-up</a>
                 </form>
             </td>
         </tr>

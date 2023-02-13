@@ -34,5 +34,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     
     Route::resource('persons',App\Http\Controllers\admin\PersonController::class);
+    Route::get('/persons_search', [App\Http\Controllers\admin\PersonController::class, 'persons_search'])->name('persons_search');
 
 });

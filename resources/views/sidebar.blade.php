@@ -284,12 +284,29 @@
           <i class="bi bi-grid"></i>
           <span>Leads</span>
         </a>
+
+
+
+        <a class="nav-link " href=" ">
+          <i class="bi bi-grid"></i>
+          <span>Employees</span>
+        </a>
       </li><!-- End Dashboard Nav -->
 
 
-
     
-      </li>
+
+
+
+
+ 
+
+
+
+
+
+
+    </ul>
       
      <!-- End Tables Nav -->
  <!-- End Charts Nav -->

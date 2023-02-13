@@ -42,6 +42,34 @@
       
 
 
+
+
+
+
+
+
+<br>
+<br>
+<br>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Title:</strong>
+              
+                <select name="title"  >
+                    <option value="Mr.">Mr. </option>
+                    <option value="Ms.">Ms.</option>
+                    <option value="Mr.">Mr.</option>
+                    <option value="Eng.">Eng.</option>
+                    <option value="Dr.">Dr.</option>
+                  </select>
+            </div>
+        </div>
+
+
+
+
+
+<br>
         
 <br>
 
@@ -61,7 +89,9 @@
         </div>
 
 
-
+        <br>
+        <br>
+        <br>
 
 
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -75,8 +105,7 @@
                   </select>
             </div>
         </div>
-
-
+  
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Email:</strong>
@@ -131,37 +160,48 @@
         </div>
 
 
+        <br>
+<br>
+<br>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Service:</strong>
                
                 <select name="service"  >
-                    <option value="w sender">w sender</option>
+                    <option value="w sender">window sender</option>
                     <option value="social media ads">social media ads</option>
-                    <option value="social media mangment">social media mangment</option>
+                    <option value="social media mangment">social media manegment</option>
                     <option value="makeing website">makeing website</option>
+                    <option value="makeing website">makeing mobile apps </option>
                   
                   </select>
             </div>
         </div>
-<br>
-<br>
-
+        <br>
+        <br>
+        <br>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Source:</strong>
                 <select name="source"  >
                     <option value="Facebook">Facebook</option>
                     <option value="Instgram">Instgram</option>
+                    <option value="Youtube">Youtube</option>
+                    <option value="Linkedin">Linkedin</option>
+                    <option value="SMS">SMS</option>
                     <option value="Snap">Snap</option>
                     <option value="Snap">Email</option>
+                    <option value="call">call</option>
+                    <option value="Other">Other</option>
                   
                   </select>
             </div>
         </div>
 
 
-      
+        <br>
+        <br>
+        <br>
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
@@ -182,16 +222,66 @@
 
         
 
-
-
-
-
-
-
        
 
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <br>
+              
+                <strong>Department:</strong>
+                <select name="department"  >
+                    <option value="C Center">slaes</option>
+                    <option value="sales">slaes</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Manegment">Manegment</option>
+                   
+                  
+                  </select>
+                  <br>
+            </div>
+        </div>
+
+
+     
+
         <br>
         <br>
+
+
+
+
+
+
+
+
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Employee:</strong>
+                <select name="emp"  >
+                    <option value="Ahmed">Ahmed</option>
+                    <option value="Forsan">Forsan</option>
+                   
+                  
+                  </select>
+                  <br>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
         </div>

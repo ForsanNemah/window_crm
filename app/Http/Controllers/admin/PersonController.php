@@ -24,6 +24,81 @@ class PersonController extends Controller
             
     }
 
+
+    public function persons_search(StoreDemoRequest $request)
+    {
+
+        $persons =person::where([
+            ['name', '!=', Null],
+            [function ($query) use ($request) {
+                if (($s = $request->search_key)) {
+                    $query->orWhere('phn', 'LIKE', '%' . $s . '%')
+                       
+                        ->get();
+                }
+            }]
+        ])->paginate(6);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        //latest()->paginate(5);
+        // return $persons; 
+       
+         return view('admin.persons.index',compact('persons'))
+             ->with('i', (request()->input('page', 1) - 1) * 5);
+
+        /*
+        echo  "search called".$request->search_key;
+        
+        $persons =person::
+
+        
+        
+        where([
+            ['name', '!=', Null],
+            [function ($query) use ($request) {
+                if (($s = $request->search_key)) {
+                    $query->orWhere('name', 'LIKE', '%' . $s . '%')
+                      
+                        ->get();
+                }
+            }]
+        ])->latest()->paginate(5);
+       // return $persons; 
+      
+        return view('admin.persons.index',compact('persons'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+            
+           */ 
+    }
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * Show the form for creating a new resource.
      *
