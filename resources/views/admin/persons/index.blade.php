@@ -104,6 +104,7 @@
     
                     <a class="btn btn-primary" href="{{ route('persons.edit',$person->id) }}">Edit</a>
                     <div class="form-group">
+                       
                      
                         <br>
                         <a class="btn btn-primary" href="{{ route('user_follow_up_logs',$person->id) }}">Follow up</a>
