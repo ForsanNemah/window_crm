@@ -33,11 +33,19 @@
     <div class="input-group">
         <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" name="search_key" />
         <button type="submit" class="btn btn-outline-primary">search</button>
+       
       </div>
 
 </form>
 
 <br>
+
+
+
+
+
+
+ 
 
     <table class="table table-bordered">
         <tr>
@@ -55,11 +63,18 @@
             <th>Service</th>
             <th>Source</th>
             <th>Time to Call</th>
-            <th>mony</th>
+          
             <th>Note</th>
+            <th>Date</th>
+            <th>Time</th>
             <th width="280px"> </th>
         </tr>
         @foreach ($persons as $person)
+        @php
+         $new_array = explode(' ',$person->created_at) ;
+     @endphp
+      
+ 
         <tr>
             <td>{{ ++$i }}</td>
             <td>{{ $person->name }}</td>
@@ -75,24 +90,31 @@
             <td>{{ $person->service }}</td>
             <td>{{ $person->source }}</td>
             <td>{{ $person->time_to_call }}</td>
-            <td>{{ $person->mony}}</td>
+            
             <td>{{ $person->note }}</td>
+
+            <td>{{ $new_array[0]}}</td>
+            <td>{{ $new_array[1]}}</td>
+            
+          
             <td>
                 <form action="{{ route('persons.destroy',$person->id) }}" method="POST">
    
                    
     
                     <a class="btn btn-primary" href="{{ route('persons.edit',$person->id) }}">Edit</a>
-               
-   <br>
+                    <div class="form-group">
+                     
+                        <br>
+                        <a class="btn btn-primary" href="{{ route('user_follow_up_logs',$person->id) }}">Follow up</a>
+                    </div>
+                     
+   
                     @csrf
                     @method('DELETE')
-                    <!--
-      
+      <!--
                     <button type="submit" onclick="return confirm('Sure Want Delete?')"  class="btn btn-danger">Delete</button>
-                    -->
-                    <br>
-                    <a class="btn btn-primary" href="{{ route('persons.edit',$person->id) }}">Follow-up</a>
+      -->
                 </form>
             </td>
         </tr>

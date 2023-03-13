@@ -32,8 +32,41 @@
   
      <div class="row">
 
+<br>
+<br>
+
+
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
+                
+<br>
+<br>
+
+                <strong>Title:</strong>
+              
+                <select name="title"  >
+                    <option value="Mr.">Mr. </option>
+                    <option value="Ms.">Ms.</option>
+                    <option value="Mr.">Mr.</option>
+                    <option value="Eng.">Eng.</option>
+                    <option value="Dr.">Dr.</option>
+                  </select>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+              
+                <br>
                 <strong>Name:</strong>
                 <input type="text" name="name" class="form-control" placeholder="Name" required>
             </div>
@@ -51,19 +84,6 @@
 <br>
 <br>
 <br>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Title:</strong>
-              
-                <select name="title"  >
-                    <option value="Mr.">Mr. </option>
-                    <option value="Ms.">Ms.</option>
-                    <option value="Mr.">Mr.</option>
-                    <option value="Eng.">Eng.</option>
-                    <option value="Dr.">Dr.</option>
-                  </select>
-            </div>
-        </div>
 
 
 
@@ -203,10 +223,10 @@
         <br>
         <br>
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-xs-12 col-sm-12 col-md-12" hidden>
             <div class="form-group">
                 <strong>Mony:</strong>
-                <input type="number" name="mony" class="form-control"  required>
+                <input type="number" name="mony" class="form-control"   >
             </div>
         </div>
 
@@ -229,12 +249,22 @@
                 <br>
               
                 <strong>Department:</strong>
-                <select name="department"  >
-                    <option value="C Center">slaes</option>
+                <select name="department"   id="departments_id"  >
+
+                    <!--
+                    <option value="C Center">C Center</option>
                     <option value="sales">slaes</option>
                     <option value="Marketing">Marketing</option>
                     <option value="Manegment">Manegment</option>
-                   
+                    -->
+
+                    @foreach($departments as $department )
+    <option value="{{ $department->name }}">{{ $department->name }}</option>
+  @endforeach
+
+
+ 
+  
                   
                   </select>
                   <br>
@@ -255,18 +285,7 @@
 
 
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Employee:</strong>
-                <select name="emp"  >
-                    <option value="Ahmed">Ahmed</option>
-                    <option value="Forsan">Forsan</option>
-                   
-                  
-                  </select>
-                  <br>
-            </div>
-        </div>
+    
 
 
 
@@ -288,4 +307,16 @@
     </div>
    
 </form>
+
+
+
 @endsection
+
+<script>
+
+function myFunction() {
+  var x = document.getElementById("departments_id").value;
+alert(x);
+}
+ 
+</script>

@@ -12,10 +12,55 @@ return [
     | This value is the name of your application. This value is used when the
     | framework needs to place the application's name in a notification or
     | any other location as required by the application or its packages.
+
+
+         <option value="very interested">very interested</option>
+                    <option value="vist">vist</option>
+                    <option value="appointment">appointment</option>
+                    <option value="his enquiry not avilable">his enq. not avilable</option>
+                    <option value="not responed">not responed</option>
+                    <option value="wating for approval">wating for approval</option>
+                    <option value="follow up">follow up</option>
     |
     */
 
+    'fu' => 'follow up',
+    'vi' => 'very interested',
+    'vis' => 'visit ',
+    'ap' => 'appointment ',
+    'wfa' => 'wating for approval',
+    'nr' => 'not responed',
+    'hena' => 'his enquiry not avilable',
+    'sold' => 'sold',
+    'res' => 'reschedule',
+    'lost' => 'lost',
+
+
+
+
+
+
+
+
+
+
     'name' => env('APP_NAME', 'Window CRM'),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /*
     |--------------------------------------------------------------------------
