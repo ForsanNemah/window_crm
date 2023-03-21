@@ -63,6 +63,16 @@ Route::group(['middleware' => ['auth']], function () {
     
    // Route::get('/complain_logs/{id}', [App\Http\Controllers\admin\complain_Controller::class, 'index_id'])->name('complain_logs');
 
+
+
+   Route::get('/rm', function() {
+    \Artisan::call('optimize:clear');
+    return 'Application cache cleared';
+});
+
+
+
+
     
 
 
