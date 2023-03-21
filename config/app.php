@@ -36,6 +36,11 @@ return [
     'lost' => 'lost',
 
 
+    'closed' => 'closed',
+    'opened' => 'opened',
+    'postponed' => 'postponed',
+
+
 
 
 

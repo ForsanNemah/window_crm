@@ -132,7 +132,7 @@ class empController extends Controller
         //
 
         $request->validate([
-            'name' => 'required',
+            'name' => ['required','unique:users'],
             'email' => ['required','unique:users'],
             'password' => 'required',
             'department' => 'required',

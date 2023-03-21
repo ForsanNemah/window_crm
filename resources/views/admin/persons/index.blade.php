@@ -7,9 +7,21 @@
             <div class="pull-left">
                 <h2> </h2>
             </div>
+
+
+
+            @if (Auth::user()->user_type==0)
+
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('persons.create') }}"> Create New Lead</a>
             </div>
+
+            @endif
+
+
+        
+
+
         </div>
     </div>
     <br>
@@ -102,12 +114,22 @@
    
                    
     
-                    <a class="btn btn-primary" href="{{ route('persons.edit',$person->id) }}">Edit</a>
+                 
                     <div class="form-group">
+
+                        <br>
                        
-                     
+                        <a class="btn btn-primary" href="{{ route('persons.edit',$person->id) }}">Edit</a>
+                        <br>
                         <br>
                         <a class="btn btn-primary" href="{{ route('user_follow_up_logs',$person->id) }}">Follow up</a>
+
+
+                        <br>
+                        <br>
+                        <a class="btn btn-primary" href="{{ route('complain_logs',$person->id) }}">complain</a>
+
+
                     </div>
                      
    

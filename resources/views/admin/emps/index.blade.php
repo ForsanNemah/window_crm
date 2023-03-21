@@ -27,9 +27,10 @@
 
 
 <br>
-
+<!--
 <form action="{{ route('persons_search') }}" method="GET">
     @csrf
+
 
     <div class="input-group">
         <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" name="search_key" />
@@ -37,6 +38,7 @@
       </div>
 
 </form>
+-->
 
 <br>
 

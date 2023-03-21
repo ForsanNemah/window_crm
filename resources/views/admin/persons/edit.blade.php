@@ -176,10 +176,10 @@
     
           
     
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-12 col-sm-12 col-md-12" hidden>
                 <div class="form-group">
                     <strong>Mony:</strong>
-                    <input type="number" name="mony" class="form-control" value="{{$person->mony}}" required >
+                    <input type="number" name="mony" class="form-control" value="{{$person->mony}}"   >
                 </div>
             </div>
     

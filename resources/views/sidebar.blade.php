@@ -173,15 +173,15 @@
 
  
 
-
+        <a class="nav-link " href="{{route('persons.index')}}">
+          <i class="bi bi-grid"></i>
+          <span>Leads</span>
+        </a>
+        
 
 @if ( Auth::user()->user_type==0)
     
 
-<a class="nav-link " href="{{route('persons.index')}}">
-  <i class="bi bi-grid"></i>
-  <span>Leads</span>
-</a>
 
 
 

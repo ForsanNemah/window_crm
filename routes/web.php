@@ -42,10 +42,27 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('follow_up',App\Http\Controllers\admin\follow_upController::class);
 
+
+
+
+
+
     Route::get('/user_follow_up_logs/{id}', [App\Http\Controllers\admin\follow_upController::class, 'index_id'])->name('user_follow_up_logs');
     Route::get('/leads_report', [App\Http\Controllers\admin\PersonController::class, 'index_reports'])->name('leads_report');
     Route::get('/persons_search_with_filter', [App\Http\Controllers\admin\PersonController::class, 'persons_search_with_filter'])->name('persons_search_with_filter');
     Route::get('/person_make_excel', [App\Http\Controllers\admin\PersonController::class, 'make_excel'])->name('person_make_excel');
+
+
+
+    Route::resource('complain',App\Http\Controllers\admin\complain_Controller::class);
+
+
+
+
+    Route::get('/complain_logs/{id}', [App\Http\Controllers\admin\complain_Controller::class, 'index_id'])->name('complain_logs');
+    
+   // Route::get('/complain_logs/{id}', [App\Http\Controllers\admin\complain_Controller::class, 'index_id'])->name('complain_logs');
+
     
 
 

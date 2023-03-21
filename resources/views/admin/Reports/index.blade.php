@@ -284,6 +284,9 @@ https://api.whatsapp.com/send/?phone={{$person->phn}}&text&type=phone_number&app
            <div class="form-group">
                <br>
                <a class="btn btn-primary" href="{{ route('user_follow_up_logs',$person->id) }}">Follow up</a>
+               <br>
+               <br>
+               <a class="btn btn-primary" href="{{ route('complain_logs',$person->id) }}">complain</a>
            </div>
 
            

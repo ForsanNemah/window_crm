@@ -8,6 +8,7 @@ use App\Models\emp;
 use App\Models\User;
 use App\Models\follow_up;
 use App\Models\department;
+use App\Models\Complain;
 use App\Http\Requests\StoreDemoRequest;
 use App\Http\Requests\UpdateDemoRequest;
 use Illuminate\Support\Facades\Hash;
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\DB;
  
 use Session;
 
-class follow_upController extends Controller
+class complain_Controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -38,12 +39,12 @@ class follow_upController extends Controller
 
 
  
-$follow_ups =DB::select('select * from users,follow_ups where users.id=follow_ups.user_id and follow_ups.lead_id=?  ORDER BY follow_ups.id desc',[  Session::get('id')]);
+$complaints_logs =DB::select('select * from complaints');
 
 
-
+//return  $complaints_logs;
  
-return view('admin.follow_up.index',compact('follow_ups'));
+return view('admin.complain.index',compact('complaints_logs'));
 
 
 
@@ -93,37 +94,15 @@ return view('admin.follow_up.index',compact('follow_ups'));
         Session::put('id', $id);
 
 
+        $person =DB::select('select * from persons where id=? ',[  Session::get('id')]);
 
-
-
-
-
-
-
-        $person =DB::select('select * from persons where id=?',[  Session::get('id')]);
-
-
-
-//return   $person;
-
-
-
-
-
-
-
-
-
-
-
-        
-
-        $follow_ups =DB::select('select * from users,follow_ups where users.id=follow_ups.user_id and follow_ups.lead_id=?  ORDER BY follow_ups.id desc',[  Session::get('id')]);
+        $complaints_logs =DB::select('select * from complaints,users  where complaints.lead_id=? and complaints.lead_id=users.id ORDER BY complaints.id desc ',[$id]);
 
 
 
  
-        return view('admin.follow_up.index',compact('follow_ups','person'));
+        return view('admin.complain.index',compact('complaints_logs','person'));
+
 
 
 
@@ -285,11 +264,13 @@ return view('admin.follow_up.index',compact('follow_ups'));
     public function create()
     {
         //
-
+        $users =User::get();
+      
+   
        $departments =department::get();
       
        // return view('admin.persons.create',compact('departments','sex'));
-       return view('admin.follow_up.create',compact('departments'));
+       return view('admin.complain.create',compact('departments','users'));
     }
 
     /**
@@ -311,7 +292,7 @@ $data['lead_id']= Session::get('id');
 
 
 
-
+/*
 $follow_ups =DB::select('update persons set state=? where id=?',[  
 
     $data['state']
@@ -321,6 +302,7 @@ $follow_ups =DB::select('update persons set state=? where id=?',[
 
 
 ]);
+*/
 
 
 
@@ -333,11 +315,17 @@ $follow_ups =DB::select('update persons set state=? where id=?',[
 
 
 
+    Complain::create( $data);
 
-    follow_up::create( $data);
-       
-        return redirect()->route('user_follow_up_logs',Session::get('id'))
+
+
+    return redirect()->route('complain_logs',Session::get('id'))
+    ->with('success','log. created successfully.');
+
+       /*
+        return redirect()->route('complain_logs',Session::get('id'))
                         ->with('success','log. created successfully.');
+                        */
     }
 
     /**
