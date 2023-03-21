@@ -65,7 +65,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 
-   Route::get('/rm', function() {
+   Route::get('/rmm', function() {
     \Artisan::call('optimize:clear');
     return 'Application cache cleared';
 });
