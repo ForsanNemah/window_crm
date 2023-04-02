@@ -102,7 +102,7 @@
             <div class="form-group">
                 <br>
                 <strong>Date</strong>
-                <input type="date" name="appointment_date" class="form-control" placeholder="Note" >
+                <input type="datetime-local" name="appointment_date" class="form-control" placeholder="Note" >
             </div>
         </div>
 
