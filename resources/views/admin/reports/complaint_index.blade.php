@@ -201,7 +201,7 @@
  
     <td>
 
-        {{$person->id}}
+       
 
         <a class="btn btn-primary" href="{{ route('complain2.edit',$person->id) }}">Edit</a>
 

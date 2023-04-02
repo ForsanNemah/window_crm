@@ -20,6 +20,9 @@
 
 
 
+<br>
+<br>
+
 
                 <a class="btn btn-success" href="{{ route('person_make_excel') }}"> Export to Excel</a>
             </div>
