@@ -55,7 +55,7 @@
             <div class="form-group">
                 <br>
               
-                <strong>State:</strong>
+                <strong>Status:</strong>
                 <br>
                 <select name="state" onchange="gsi();"   id="state_id"  >
 
