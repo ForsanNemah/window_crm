@@ -11,7 +11,7 @@
             
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('emps.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('user_follow_up_logs',Session::get('id')) }}"> Back</a>
         </div>
     </div>
 </div>
@@ -94,21 +94,14 @@
 
        
         
-        <div class="col-xs-12 col-sm-12 col-md-12" id="v_id"  >
-            <div class="form-group">
-                <br>
-                <strong>visit date</strong>
-                <input type="date" name="visit_date" class="form-control" placeholder="Note"   >
-            </div>
-        </div>
-
+       
 
 
 
         <div class="col-xs-12 col-sm-12 col-md-12" id="a_id"  >
             <div class="form-group">
                 <br>
-                <strong>appointment date</strong>
+                <strong>Date</strong>
                 <input type="date" name="appointment_date" class="form-control" placeholder="Note" >
             </div>
         </div>
@@ -166,8 +159,7 @@
 window.onload = function() {
   
    // alert("wwe");
-    var element = document.getElementById("v_id");
-        element.style.display = "none";
+ 
         var element2 = document.getElementById("a_id");
         element2.style.display = "none";
 }
@@ -178,7 +170,7 @@ window.onload = function() {
 if(x.localeCompare("{{config('app.vis')}}")==0){
 
 
-document.getElementById('v_id').style.display = 'block';
+document.getElementById('a_id').style.display = 'block';
 }
 
 

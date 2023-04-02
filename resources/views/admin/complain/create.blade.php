@@ -11,7 +11,7 @@
             
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('complain.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('complain_logs',Session::get('id')) }}"> Back</a>
         </div>
     </div>
 </div>

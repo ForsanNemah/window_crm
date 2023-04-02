@@ -7,7 +7,7 @@
                 <h2>Edit Complain</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('complain_logs',Session::get('id')) }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('complaint_report') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
         </div>
     @endif
   
-    <form action="{{ route('complain.update',$Complain->id) }}" method="POST">
+    <form action="{{ route('complain2.update',$Complain2->id) }}" method="POST">
         @csrf
         @method('PUT')
    
@@ -38,10 +38,10 @@
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Complaint Status:</strong>
+                <strong>Complaint Statuss:</strong>
                 
                 <select name="state"  >
-                    <option  value="{{$Complain->title}}"> {{$Complain->state}}</option>
+                    <option  value="{{$Complain2->title}}"> {{$Complain2->state}}</option>
 
                     <option value="{{config('app.closed')}}">{{config('app.closed')}}</option>
                     <option value="{{config('app.opened')}}">{{config('app.opened')}}</option>
@@ -102,7 +102,7 @@
                 <br>
            
                 <strong>Note:</strong>
-                <input type="text" name="note" class="form-control" value="{{$Complain->note}}" required>
+                <input type="text" name="note" class="form-control" value="{{$Complain2->note}}" required>
             </div>
         </div>
 
@@ -114,7 +114,7 @@
                 <br>
            
                 <strong>Time to Call:</strong>
-                <input type="time" name="time_to_call" class="form-control" value="{{$Complain->time_to_call}}" required>
+                <input type="time" name="time_to_call" class="form-control" value="{{$Complain2->time_to_call}}" required>
             </div>
         </div>
 
@@ -142,7 +142,7 @@
                     <option value="Manegment">Manegment</option>
                     -->
 
-                    <option  value="{{$Complain->referred_to}}"> {{$Complain->referred_to}}</option>
+                    <option  value="{{$Complain2->referred_to}}"> {{$Complain2->referred_to}}</option>
 
                     @foreach($users as $user )
     <option value="{{ $user->name }}">{{ $user->name }}</option>

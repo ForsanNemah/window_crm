@@ -202,9 +202,15 @@
 
         <a class="nav-link " href="{{route('leads_report')}}">
           <i class="bi bi-grid"></i>
-          <span>Reports</span>
+          <span> Follow up Reports</span>
         </a>
 
+
+
+        <a class="nav-link " href="{{route('complaint_report')}}">
+          <i class="bi bi-grid"></i>
+          <span> Complaints Report</span>
+        </a>
 
 
       </li><!-- End Dashboard Nav -->

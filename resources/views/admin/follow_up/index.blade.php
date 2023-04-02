@@ -136,9 +136,8 @@
     <table class="table table-bordered">
        
             <th>Note</th>
-            <th>State</th>
-            <th>Visit Date</th>
-            <th>Appointment Date</th>
+            <th>Status</th>
+            <th> Date</th>
             <th>User Name</th>
             <th>Date</th>
             <th>Time</th>
@@ -153,7 +152,7 @@
             
             <td>{{ $follow_up->note }}</td>
             <td>{{ $follow_up->state }}</td>
-            <td>{{ $follow_up->visit_date }}</td>
+           
             <td>{{ $follow_up->appointment_date}}</td>
             <td>{{ $follow_up->name}}</td>
             <td>{{ $new_array[0]}}</td>

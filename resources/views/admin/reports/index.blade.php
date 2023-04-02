@@ -8,7 +8,19 @@
                 <h2> </h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('persons.create') }}"> Create New Lead</a>
+
+                @if (Auth::user()->user_type==0)
+
+                <div class="pull-right">
+                    <a class="btn btn-success" href="{{ route('persons.create') }}"> Create New Lead</a>
+                </div>
+    
+                @endif
+    
+
+
+
+
                 <a class="btn btn-success" href="{{ route('person_make_excel') }}"> Export to Excel</a>
             </div>
         </div>
@@ -127,23 +139,11 @@
     <table class="table table-bordered">
         <tr>
             <th>No</th>
-            <th>Name</th>
-            <th>State</th>
-            <th>Department</th>
-            <th>Phone Number</th>
-            <th>Phone Number 2</th>
-            <th>Prefered Number</th>
-            <th>Email</th>
-          
-            <th>Country</th>
-            <th>Service</th>
-            <th>Source</th>
-            <th>Time to Call</th>
-    
-            <th>Note</th>
+           
             <th>Date</th>
             <th>Time</th>
-            <th width="280px"> </th>
+            <th>Lead Name</th>
+            <th>Service</th>
         </tr>
         @php
         $i=1; 
@@ -162,24 +162,10 @@
     @php
     $i++; 
  @endphp
-   <td>{{ $person->name }}</td>
-   <td>{{ $person->state }}</td>
-   <td>{{ $person->department }}</td>
-   <td>{{ $person->phn }}</td>
-   <td>{{ $person->phn2 }}</td>
-   <td>{{ $person->prefered_contact}}</td>
-   <td>{{ $person->email }}</td>
-
-   <td>{{ $person->country }}</td>
-   <td>{{ $person->service }}</td>
-   <td>{{ $person->source }}</td>
-   <td>{{ $person->time_to_call }}</td>
-
-
-
-   <td>{{ $person->note }}</td>
-   <td>{{ $new_array[0]}}</td>
-   <td>{{ $new_array[1]}}</td>
+     <td>{{ $new_array[0]}}</td>
+     <td>{{ $new_array[1]}}</td>
+     <td>{{ $person->name }}</td>
+     <td>{{ $person->service }}</td>
 
 
 

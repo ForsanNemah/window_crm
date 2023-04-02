@@ -104,7 +104,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Phone Number 2:</strong>
-                <input type="text" name="phn2" class="form-control"  required>
+                <input type="text" name="phn2" class="form-control"   >
             </div>
         </div>
 
@@ -129,7 +129,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Email:</strong>
-                <input type="text" name="email" class="form-control" required>
+                <input type="text" name="email" class="form-control"  >
             </div>
         </div>
 
@@ -138,7 +138,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Address:</strong>
-                <input type="text" name="address" class="form-control"  required>
+                <input type="text" name="address" class="form-control"   >
             </div>
         </div>
 
@@ -147,7 +147,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Area:</strong>
-                <input type="text" name="area" class="form-control" required >
+                <input type="text" name="area" class="form-control"   >
             </div>
         </div>
 
@@ -165,7 +165,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>City:</strong>
-                <input type="text" name="city" class="form-control" required >
+                <input type="text" name="city" class="form-control"   >
             </div>
         </div>
 

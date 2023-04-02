@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\DB;
  
 use Session;
 
-class complain_Controller extends Controller
+class complain_Controller2 extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -342,17 +342,20 @@ $follow_ups =DB::select('update persons set state=? where id=?',[
      * @param  \App\Models\Demo  $demo
      * @return \Illuminate\Http\Response
      */
-    public function edit(Complain $Complain)
+    public function edit(Complain $Complain2)
     {
+
 //echo $state;
         //echo $emp;
         //
        // echo $person;
        
-      // return $Complain;
+       //return $Complain2;
+       
       $users =User::get();
-      $departments =department::get();
-       return view('admin.complain.edit',compact('Complain','departments','users'));
+     $departments =department::get();
+       return view('admin.complain.edit2',compact('Complain2','departments','users'));
+       
        
     }
 
@@ -362,7 +365,8 @@ $follow_ups =DB::select('update persons set state=? where id=?',[
 
 
 
-    
+   
+
 
 
 
@@ -381,20 +385,21 @@ $follow_ups =DB::select('update persons set state=? where id=?',[
      * @param  \App\Models\Demo  $demo
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDemoRequest $request, Complain $Complain)
+    public function update(UpdateDemoRequest $request, Complain $Complain2)
     {
         //
 
-//print($request->all());
+ 
 
-
+//return $request->all();
 
        
       
-        $Complain->update($request->all());
+        $Complain2->update($request->all());
       
-        return redirect()->route('complain_logs',Session::get('id'))
+        return redirect()->route('complaint_report')
                         ->with('success','Complain updated successfully');
+                        
                         
     }
 

@@ -55,11 +55,13 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::resource('complain',App\Http\Controllers\admin\complain_Controller::class);
-
+    Route::resource('complain2',App\Http\Controllers\admin\complain_Controller2::class);
+    Route::get('/complaint_report', [App\Http\Controllers\admin\complain_Controller::class, 'index_reports'])->name('complaint_report');
 
 
 
     Route::get('/complain_logs/{id}', [App\Http\Controllers\admin\complain_Controller::class, 'index_id'])->name('complain_logs');
+ 
     
    // Route::get('/complain_logs/{id}', [App\Http\Controllers\admin\complain_Controller::class, 'index_id'])->name('complain_logs');
 

@@ -62,24 +62,12 @@
     <table class="table table-bordered">
         <tr>
             <th>No</th>
-            <th>Name</th>
-            <th>Title</th>
-            <th>Phone Number</th>
-            <th>Phone Number 2</th>
-            <th>Prefered Number</th>
-            <th>Email</th>
-            <th>Address</th>
-            <th>Area</th>
-            <th>City</th>
-            <th>Country</th>
-            <th>Service</th>
-            <th>Source</th>
-            <th>Time to Call</th>
-          
-            <th>Note</th>
+           
             <th>Date</th>
             <th>Time</th>
-            <th width="280px"> </th>
+            <th>Lead Name</th>
+            <th>Service</th>
+            
         </tr>
         @foreach ($persons as $person)
         @php
@@ -89,25 +77,13 @@
  
         <tr>
             <td>{{ ++$i }}</td>
-            <td>{{ $person->name }}</td>
-            <td>{{ $person->title }}</td>
-            <td>{{ $person->phn }}</td>
-            <td>{{ $person->phn2 }}</td>
-            <td>{{ $person->prefered_contact}}</td>
-            <td>{{ $person->email }}</td>
-            <td>{{ $person->address }}</td>
-            <td>{{ $person->area }}</td>
-            <td>{{ $person->city }}</td>
-            <td>{{ $person->country }}</td>
-            <td>{{ $person->service }}</td>
-            <td>{{ $person->source }}</td>
-            <td>{{ $person->time_to_call }}</td>
             
-            <td>{{ $person->note }}</td>
-
+           
+             
             <td>{{ $new_array[0]}}</td>
             <td>{{ $new_array[1]}}</td>
-            
+            <td>{{ $person->name }}</td>
+            <td>{{ $person->service }}</td>
           
             <td>
                 <form action="{{ route('persons.destroy',$person->id) }}" method="POST">

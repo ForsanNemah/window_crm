@@ -37,7 +37,7 @@ return [
 
 
     'closed' => 'closed',
-    'opened' => 'opened',
+    'opened' => 'open',
     'postponed' => 'postponed',
 
 

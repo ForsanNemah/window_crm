@@ -81,7 +81,11 @@
           <td> {{$item->time_to_call}}</td>
           <td> {{$item->note}}</td>
           <td> {{$item->department}}</td>
-         
+
+        
+
+
+
          
       
         </tr>
@@ -107,7 +111,7 @@
 
 
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('complain.create') }}">   New 
+                <a class="btn btn-success" href="{{ route('complain.create') }}"> Create New Complaint
                     </a>
             </div>
         </div>
@@ -174,6 +178,15 @@
 
             <td>{{ $new_array[0]}}</td>
             <td>{{ $new_array[1]}}</td>
+
+
+
+            <td>
+              
+              <a class="btn btn-primary" href="{{ route('complain.edit',[$complaints_log->id]) }}">Edit</a>
+              
+              </td>
+
             <!--
             <td>
                 <form action="{{ route('complain.destroy',$complaints_log->id) }}" method="POST">
