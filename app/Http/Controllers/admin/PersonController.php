@@ -393,7 +393,7 @@ return view('admin.reports.index',compact('persons'))
         $request->validate([
             'name' => 'required',
             'phn' => 'required',
-            'note' => 'required',
+             
         ]);
       
         person::create($request->all());
@@ -423,7 +423,8 @@ return view('admin.reports.index',compact('persons'))
     {
         //
        // echo $person;
-       return view('admin.persons.edit',compact('person'));
+       $departments =department::get();
+       return view('admin.persons.edit',compact('person','departments'));
     }
 
     /**
@@ -444,7 +445,7 @@ return view('admin.reports.index',compact('persons'))
         $request->validate([
             'name' => 'required',
             'phn' => 'required',
-            'note' => 'required',
+            
         ]);
       
         $person->update($request->all());

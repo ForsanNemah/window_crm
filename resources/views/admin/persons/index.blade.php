@@ -43,7 +43,8 @@
     @csrf
 
     <div class="input-group">
-        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" name="search_key" />
+        <input type="number" class="form-control rounded" placeholder="Search by Phone Number" aria-label="Search" aria-describedby="search-addon" name="search_key" />
+        &nbsp      &nbsp
         <button type="submit" class="btn btn-outline-primary">search</button>
        
       </div>

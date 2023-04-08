@@ -33,13 +33,17 @@
 <br>
 <br>
 
+<div class="row">
 
+
+
+    <div class="col-md-6">
 
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Complaint Status:</strong>
-                
+                <br>
                 <select name="state"  >
                     <option  value="{{$Complain->title}}"> {{$Complain->state}}</option>
 
@@ -59,6 +63,7 @@
                 <br>
               
                 <strong>Department:</strong>
+                <br>
                 <select name="department"   id="departments_id"  >
 
                     <!--
@@ -133,6 +138,7 @@
                 <br>
               
                 <strong>Referred to :</strong>
+                <br>
                 <select name="referred_to"   id="departments_id"  >
 
                     <!--
@@ -188,6 +194,7 @@
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
+</div>
    
     </form>
 @endsection

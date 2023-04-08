@@ -23,183 +23,175 @@
         </div>
     @endif
   
+    <br>
     <form action="{{ route('persons.update',$person->id) }}" method="POST">
         @csrf
         @method('PUT')
    
         <div class="row">
 
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Name:</strong>
-                    <input type="text" name="name" class="form-control" value="{{$person->name}}" required>
-                </div>
-            </div>
+            
     
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Title:</strong>
-                    
-                    <select name="title"  >
-                        <option  value="{{$person->title}}"> {{$person->title}}</option>
-                        <option value="Mr."> Mr.</option>
-                        <option value="Ms.">Ms.</option>
-                        <option value="Mrs.">Mrs.</option>
-                        <option value="Eng.">Eng.</option>
-                        <option value="Dr.">Dr.</option>
-                      </select>
-                </div>
-            </div>
+           
+
+
+    <br>
+    <br>
     
     
+    <div class="row">
+    
+        <div class="col">
+            <label for="IDofInput">Title:</label> 
+            <select name="title"  >
+                <option value="{{$person->title}}">{{$person->title}}</option>
+                <option value="Mr.">Mr. </option>
+                <option value="Ms.">Ms.</option>
+                <option value="Mr.">Mr.</option>
+                <option value="Eng.">Eng.</option>
+                <option value="Dr.">Dr.</option>
+              </select>
+    
+    <br>
+    <br>
+    
+    
+            <strong>Name:</strong>
+              <input type="text" name="name" class="form-control" value="{{$person->name}}"   required>
+    
+              <strong>Phone Number:</strong>
+              <input type="number" name="phn" class="form-control" value="{{$person->phn}}" required >
+    
+              <strong>Phone Number 2:</strong>
+              <input type="number" name="phn2" class="form-control"  value="{{$person->phn2}}"  >
+    
+    <br>
+    
+              <strong>Prefred Contact:</strong>
+                  
+              <select name="prefered_contact"  >
+                <option value="{{$person->prefered_contact}}">{{$person->prefered_contact}}</option>
+                  <option value="1"> 1 </option>
+                  <option value="2">2</option>
+                
+                </select>
+    <br>
+    <br>
+                <strong>Email:</strong>
+                <input type="text" name="email" class="form-control"  value="{{$person->email}}" >
+                <br>
+                <strong>Address:</strong>
+                <input type="text" name="address" class="form-control" value="{{$person->address}}"  >
+    
+        </div>
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        <div class="col">
+            <br>
+            <br>
+            <strong>Area:</strong>
+            <input type="text" name="area" class="form-control" value="{{$person->area}}"  >
     
             
+            <strong>Countery:</strong>
+            <br>
+            <select name="country"  >
+                <option value="ksa">ksa</option>
+              
+              
+              </select>
+    <br>
     <br>
     
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Phone Number:</strong>
-                    <input type="number" name="phn" class="form-control"  value="{{$person->phn}}"  required>
-                </div>
-            </div>
     
+              <strong>City:</strong>
+              <input type="text" name="city" class="form-control" value="{{$person->city}}"  >
     
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Phone Number 2:</strong>
-                    <input type="text" name="phn2" class="form-control" value="{{$person->phn2}}" required >
-                </div>
-            </div>
+              <strong>Time to Call:</strong>
+              <input type="time" name="time_to_call" class="form-control" value="{{$person->time_to_call}}" >
     
     
     
-    
-    
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Prefred Contact:</strong>
-                  
-                    <select name="prefered_contact"  >
-                        <option  value="{{$person->prefered_contact}}"> {{$person->prefered_contact}}</option>
-                        <option value="1"> 1 </option>
-                        <option value="2">2</option>
-                      
-                      </select>
-                </div>
-            </div>
-    
-    
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Email:</strong>
-                    <input type="text" name="email" class="form-control" value="{{$person->email}}" required>
-                </div>
-            </div>
-    
-    
-    
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Address:</strong>
-                    <input type="text" name="address" class="form-control" value="{{$person->address}}"  required>
-                </div>
-            </div>
-    
-    
-    
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Area:</strong>
-                    <input type="text" name="area" class="form-control"  value="{{$person->area}}" required >
-                </div>
-            </div>
-    
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Countery:</strong>
-                    <select name="country"  >
-                        <option  value="{{$person->country}}"> {{$person->country}}</option>
-                        <option value="ksa">ksa</option>
-                      
-                      
-                      </select>
-                </div>
-            </div>
-    
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>City:</strong>
-                    <input type="text" name="city" class="form-control" value="{{$person->city}}" required >
-                </div>
-            </div>
-    
-    
-    
-    
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Time to Call:</strong>
-                    <input type="time" name="time_to_call" class="form-control" value="{{$person->time_to_call}}" required >
-                </div>
-            </div>
-    
-    
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Service:</strong>
+    <br>
+              <strong>Service:</strong>
                    
-                    <select name="service"  >
-                        <option value="w sender">w sender</option>
-                        <option value="social media ads">social media ads</option>
-                        <option value="social media mangment">social media mangment</option>
-                        <option value="makeing website">makeing website</option>
-                      
-                      </select>
-                </div>
-            </div>
+              <select name="service"  >
+                <option value="{{$person->service}}">{{$person->service}}</option>
+                  <option value="w sender">window sender</option>
+                  <option value="social media ads">social media ads</option>
+                  <option value="social media mangment">social media manegment</option>
+                  <option value="makeing website">makeing website</option>
+                  <option value="makeing website">makeing mobile apps </option>
+                
+                </select>
+    
+    
+    
+    <br>
+    <br>
+                <strong>Source:</strong>
+                <select name="source"  >
+                    <option value="{{$person->source}}">{{$person->source}}</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="Instgram">Instgram</option>
+                    <option value="Youtube">Youtube</option>
+                    <option value="Linkedin">Linkedin</option>
+                    <option value="SMS">SMS</option>
+                    <option value="Snap">Snap</option>
+                    <option value="Snap">Email</option>
+                    <option value="call">call</option>
+                    <option value="Other">Other</option>
+                  
+                  </select>
+    
+                  <br>
+                  <strong>Note:</strong>
+                  <textarea class="form-control" style="height:150px" name="note" >
+                
+                    {{$person->note}}
+                </textarea>
+    
+    
+    <br>
+    
+                  <strong>Department:</strong>
+                  <br>
+                  <select name="department"   id="departments_id"  >
+    
+                    <option value="{{$person->department}}">{{$person->department}}</option>
+    
+                      @foreach($departments as $department )
+      <option value="{{ $department->name }}">{{ $department->name }}</option>
+    @endforeach
+    
+    
+    
+    
+                    
+                    </select>
     <br>
     <br>
     
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Source:</strong>
-                    <select name="source"  >
-                        <option value="Facebook">Facebook</option>
-                        <option value="Instgram">Instgram</option>
-                        <option value="Snap">Snap</option>
-                        <option value="Snap">Email</option>
-                      
-                      </select>
-                </div>
-            </div>
-    
+                    <button type="submit" class="btn btn-primary">Submit</button>
     
           
-    
-            <div class="col-xs-12 col-sm-12 col-md-12" hidden>
-                <div class="form-group">
-                    <strong>Mony:</strong>
-                    <input type="number" name="mony" class="form-control" value="{{$person->mony}}"   >
-                </div>
-            </div>
-    
-    
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Note:</strong>
-                    <textarea class="form-control" style="height:150px" name="note"  required  >
-                    
-                    
-                  {{$person->note}} 
-                    </textarea>
-                </div>
-            </div>
-    
-    
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
         </div>
+    </div>
+
+
+
+
+
    
     </form>
 @endsection

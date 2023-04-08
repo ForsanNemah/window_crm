@@ -30,31 +30,23 @@
 <form action="{{ route('follow_up.store') }}" method="POST">
     @csrf
   
-     <div class="row">
 
 
 
-    
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <br>
-                <strong></strong>
-                <input type="text" name="note" class="form-control" placeholder="Note" required>
+    <div class="row my-3">
+
+        <div class="col-md-6">
+
+            <br>
+            <div class="form-outline">
+                <strong>Note:</strong>
+                <input type="text" name="note" class="form-control"   required>
             </div>
-        </div>
 
-
-
-
-
-
-
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <br>
-              
+            
+            <br>
+            <div class="form-outline">
                 <strong>Status:</strong>
                 <br>
                 <select name="state" onchange="gsi();"   id="state_id"  >
@@ -78,9 +70,7 @@
   
                   
                   </select>
-                  <br>
             </div>
-        </div>
 
 
 
@@ -90,62 +80,37 @@
 
 
 
-
-
-       
-        
-       
-
-
-
-        <div class="col-xs-12 col-sm-12 col-md-12" id="a_id"  >
-            <div class="form-group">
+            <br>
+            <div class="form-outline" id="a_id">
+               
                 <br>
                 <strong>Date</strong>
                 <input type="datetime-local" name="appointment_date" class="form-control" placeholder="Note" >
             </div>
+
+
+
+
+
+
+
+
+
+
+
         </div>
 
-        
-      
-
-      
+    </div>
 
 
 
+
+    <button type="submit" class="btn btn-primary">Submit</button>
 
 
 
 
  
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-            <br>
-                <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </div>
    
 </form>
 

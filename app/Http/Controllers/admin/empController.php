@@ -195,11 +195,12 @@ class empController extends Controller
 
 //print($request->all());
 
+$data=$request->all();
+$data['password']=Hash::make($data['password']);
 
 
-       
       
-        $emp->update($request->all());
+        $emp->update($data);
       
         return redirect()->route('emps.index')
                         ->with('success','emp updated successfully');

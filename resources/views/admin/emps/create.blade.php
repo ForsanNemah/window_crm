@@ -30,49 +30,43 @@
 <form action="{{ route('emps.store') }}" method="POST">
     @csrf
   
-     <div class="row">
 
 
 
-    
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <br>
+
+
+    <div class="row my-3">
+
+        <div class="col-md-6">
+            <div class="form-outline">
                 <strong></strong>
                 <input type="text" name="name" class="form-control" placeholder="Name" required>
+                 
+
             </div>
-        </div>
 
 
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <br>
+            <br>
+            <div class="form-outline">
                 <strong></strong>
-                <input type="email" name="email" class="form-control" placeholder="Email" required>
+                <input type="email" name="email" class="form-control" placeholder="Name" required>
+                 
             </div>
-        </div>
 
 
-        
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <br>
+            <br>
+            <div class="form-outline">
                 <strong></strong>
-                <input type="password" name="password" class="form-control" placeholder="Password" required>
+                <input type="password" name="password" class="form-control" placeholder="Name" required>
+                 
             </div>
-        </div>
-
-      
 
 
 
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <br>
-              
+            <br>
+            <div class="form-outline">
+ 
                 <strong>Department:</strong>
                 <br>
                 <select name="department"   id="departments_id"  >
@@ -93,42 +87,37 @@
   
                   
                   </select>
-                  <br>
+                 
             </div>
+
+
         </div>
 
+        
 
-
-
- 
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-            <br>
-                <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
     </div>
+
+
+
+
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
    
 </form>
 
