@@ -46,14 +46,17 @@
         <tr>
             <th>No</th>
             <th>Name</th>
-            <th>department</th>
-       
+            <th>Email</th>
+            <th>Department</th>
+            <th>User Type</th>
         </tr>
         @foreach ($emps as $emp)
         <tr>
             <td>{{ ++$i }}</td>
             <td>{{ $emp->name }}</td>
+            <td>{{ $emp->email}}</td>
             <td>{{ $emp->department }}</td>
+            <td>{{ $emp->user_type }}</td>
        
             <td>
                 <form action="{{ route('emps.destroy',$emp->id) }}" method="POST">

@@ -36,7 +36,7 @@
 
             <div class="col-md-6">
                 <div class="form-outline">
-                    <strong></strong>
+                    <strong>Name</strong>
                     <input type="text" value="{{ $emp->name}}" name="name" class="form-control" placeholder="Name" required>
                      
     
@@ -45,7 +45,7 @@
     
                 <br>
                 <div class="form-outline">
-                    <strong></strong>
+                    <strong>Email</strong>
                     <input type="email" value="{{ $emp->email}}" name="email" class="form-control" placeholder="Name" required>
                      
                 </div>
@@ -53,19 +53,32 @@
     
                 <br>
                 <div class="form-outline">
-                    <strong></strong>
+                    <strong>Password</strong>
                     <input type="password" value="{{ $emp->password}}" name="password" class="form-control" placeholder="Name" required>
                      
                 </div>
     
     
     
-                <br>
+                <strong>User Type:</strong>
+                <select name="user_type"  class="form-control">
+    
+
+                    <option  value="{{$emp->user_type}}"> {{$emp->user_type}}</option>
+                    <option value="cc">cc</option>
+                    <option value="sman">sman</option>
+                    <option value="smanger">smanger</option>
+                    <option value="acc">acc</option>
+                    <option value="mmanger">mmanger</option>
+                    <option value="itmanger">itmanger</option>
+                    <option value="gmanger">gmanger</option>
+            
+                  </select>
                 <div class="form-outline">
      
                     <strong>Department:</strong>
                     <br>
-                    <select name="department"   id="departments_id"  >
+                    <select name="department"   id="departments_id" class="form-control"  >
     
                         <!--
                         <option value="C Center">C Center</option>

@@ -92,9 +92,11 @@
 
 
 
-{{    Auth::user()->name;     }}
+{{    Auth::user()->name."-".Auth::user()->user_type    }}
 <br>
-{{    Auth::user()->department;     }}
+ {{ Auth::user()->department; }}
+
+
 
 
             </span>
@@ -179,7 +181,7 @@
         </a>
         
 
-@if ( Auth::user()->user_type==0)
+@if ( Auth::user()->user_type=="admin"  )
     
 
 
@@ -207,9 +209,31 @@
 
 
 
+      
+
+
+
+
         <a class="nav-link " href="{{route('complaint_report')}}">
           <i class="bi bi-grid"></i>
           <span> Complaints Report</span>
+        </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <a class="nav-link " href="{{route('show_all_sells_orders')}}">
+          <i class="bi bi-grid"></i>
+          <span> Sells Orders</span>
         </a>
 
 

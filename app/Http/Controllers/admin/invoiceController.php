@@ -4,12 +4,17 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 
 use App\Models\person;
+use App\Models\Quo;
+use App\Models\Invoice;
 use App\Models\department;
 use App\Http\Requests\StoreDemoRequest;
 use App\Http\Requests\UpdateDemoRequest;
 use DB;
 use Auth;
-class PersonController extends Controller
+use Session;
+use \Illuminate\Pagination\Paginator;
+use App\Collection;
+class invoiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,14 +23,60 @@ class PersonController extends Controller
      */
     public function index()
     {
-        $persons =person::latest()->paginate(5);
-       // return $persons; 
-      
-        return view('admin.persons.index',compact('persons'))
+        $quotations =Quo::latest()->paginate(5);
+        //return $quotations; 
+       
+
+        return view('admin.quotation.index',compact('quotations'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
             
     }
     
+
+
+
+
+    public function index_id($id)
+    {
+
+        Session::put('id', $id);
+
+        $quotations_collection =DB::select('select quotation.*,persons.service,persons.name from quotation,persons where quotation.lead_id=persons.id ');
+        $quotations=  collect( $quotations_collection )->paginate( 5 );
+
+
+        return view('admin.quotation.index',compact('quotations'))
+        ->with('i', (request()->input('page', 1) - 1) * 5);
+
+ 
+            
+    }
+   
+
+
+    public function  show_invoices($invoice_quotation_id)
+    {
+
+        Session::put('invoice_quotation_id', $invoice_quotation_id);
+
+        echo Session::get('invoice_quotation_id');
+
+        $invoices_collection =DB::select('select invoices.*,persons.service,persons.name from invoices,persons where invoices.lead_id=persons.id   and invoices.quotation_id=? ',[Session::get('invoice_quotation_id')]);
+        $invoices=  collect( $invoices_collection )->paginate( 5 );
+        return view('admin.quotation.index_invoices',compact('invoices'))
+        ->with('i', (request()->input('page', 1) - 1) * 5);
+
+        
+ 
+            
+    }
+
+    
+
+
+
+
+
 
 
 
@@ -370,14 +421,148 @@ return view('admin.reports.index',compact('persons'))
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
         //
 
-        $departments =department::get();
+        //$departments =department::get();
       
-       // return view('admin.persons.create',compact('departments','sex'));
-       return view('admin.persons.create',compact('departments'));
+       // return view('admin.persons.create',compact('departments','sex'));,compact('departments')
+       return view('admin.quotation.create');
+    }
+
+
+
+
+    public function create_sales_order($quotation_id)
+    {
+
+        //echo $quotation_id;
+        $quotations =Quo::where('id', '=',  $quotation_id)->get();
+        //echo $quotations;
+
+$quotation;
+        foreach ($quotations as $key){
+            
+            $quotation=$key;
+
+        }
+
+//echo $quotation;
+
+        //$departments =department::get();
+      
+       // return view('admin.persons.create',compact('departments','sex'));,compact('departments')
+        return view('admin.quotation.sales_order',compact('quotation')  );
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+
+
+    public function create_invoice_order($quotation_id)
+    {
+
+        //echo $quotation_id;
+
+        Session::put('quotation_id', $quotation_id);
+
+
+        $quotations =Quo::where('id', '=',  $quotation_id)->get();
+        //echo $quotations;
+
+$quotation;
+        foreach ($quotations as $key){
+            
+            $quotation=$key;
+
+        }
+
+
+        
+
+if($quotation['quotation_state']=="sell_order"){
+
+
+    return view('admin.quotation.invoice',compact('quotation'));
+
+}
+else{
+
+    //echo "not sell order yet";
+    abort(403);
+
+}
+
+
+
+
+
+       // return $quotation;
+//echo $quotation;
+
+        //$departments =department::get();
+      
+       // return view('admin.persons.create',compact('departments','sex'));,compact('departments')
+      
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function create_with_id($id)
+    {
+       
+       echo $id;
+        //
+
+        //$departments =department::get();
+      
+       // return view('admin.persons.create',compact('departments','sex'));,compact('departments')
+       //return view('admin.quotation.create');
     }
 
     /**
@@ -388,18 +573,41 @@ return view('admin.reports.index',compact('persons'))
      */
     public function store(StoreDemoRequest $request)
     {
-        //
 
+        $data=$request->all();
+        //
+/*
         $request->validate([
             'name' => 'required',
             'phn' => 'required',
              
         ]);
+        */
       
-        person::create($request->all());
+//$data['user_id']= Auth::id();
+//$data['lead_id']= Session::get('id');
+//return $data;
+
+
+$data['user_id']= Auth::id();
+$data['lead_id']= Session::get('id');
+$data['quotation_id']= Session::get('quotation_id');
+
+
+
+//echo  Auth::id(). Session::get('id');
+      
+
+Invoice::create($data);
        
-        return redirect()->route('persons.index')
-                        ->with('success','person created successfully.');
+        return redirect()->route('quotation_index_id',Session::get('id'))
+                        ->with('success','invoice created successfully.');
+
+                       
+
+
+                    
+                    
     }
 
     /**
@@ -419,12 +627,16 @@ return view('admin.reports.index',compact('persons'))
      * @param  \App\Models\Demo  $demo
      * @return \Illuminate\Http\Response
      */
-    public function edit(person $person)
+    public function edit(Quo $quotation)
     {
+
+        //echo   $quotation;
         //
        // echo $person;
-       $departments =department::get();
-       return view('admin.persons.edit',compact('person','departments'));
+       //$departments =department::get();
+
+
+       return view('admin.quotation.edit',compact('quotation')  );
     }
 
     /**
@@ -434,24 +646,33 @@ return view('admin.reports.index',compact('persons'))
      * @param  \App\Models\Demo  $demo
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDemoRequest $request, person $person)
+    public function update(UpdateDemoRequest $request, Quo $quotation)
     {
+
+
+
+      //return  $request->all();
+
+
+
+
+
+
+
         //
 
 
+//return $request->all();
 
 
-
-        $request->validate([
-            'name' => 'required',
-            'phn' => 'required',
-            
-        ]);
+       
+       echo  $quotation->update($request->all());
       
-         echo $person->update($request->all());
-      
-        return redirect()->route('persons.index')
-                        ->with('success','person updated successfully');
+        return redirect()->route('quotation.index')
+                        ->with('success','quotation updated successfully');
+                        
+                 
+                        
     }
 
     /**

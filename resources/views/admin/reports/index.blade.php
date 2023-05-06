@@ -148,6 +148,7 @@
             <th>Time</th>
             <th>Lead Name</th>
             <th>Service</th>
+            <th>Status</th>
         </tr>
         @php
         $i=1; 
@@ -170,7 +171,7 @@
      <td>{{ $new_array[1]}}</td>
      <td>{{ $person->name }}</td>
      <td>{{ $person->service }}</td>
-
+     <td>{{ $person->state }}</td>
 
 
    <td>

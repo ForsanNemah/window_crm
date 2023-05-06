@@ -8,20 +8,21 @@
                 <h2> </h2>
             </div>
 
+
             @php
        
-       //$create_lead_users = array("admin", "cc", "sman", "smanger","acc","mmanger","itmanger");
-       $create_lead_users = array("admin", "cc", "sman", "smanger","mmanger","itmanger","gmanger");
- 
-
-
-            @endphp
-
-
-            @if (in_array(Auth::user()->user_type, $create_lead_users))
+            //$create_lead_users = array("admin", "cc", "sman", "smanger","acc","mmanger","itmanger");
+            $create_quotation_users = array("admin", "cc","gmanger", "sman", "smanger","mmanger","itmanger");
+      
+     
+     
+                 @endphp
+     
+     
+                 @if (in_array(Auth::user()->user_type, $create_quotation_users))
 
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('persons.create') }}"> Create New Lead</a>
+                <a class="btn btn-success" href="{{ route('quotation.create') }}"> Create New Quotation</a>
             </div>
 
             @endif
@@ -43,8 +44,7 @@
 
 
   
-
-
+<!--
 <br>
 
 <form action="{{ route('persons_search') }}" method="GET">
@@ -60,6 +60,9 @@
 </form>
 
 <br>
+
+-->
+
 
 
 
@@ -77,11 +80,10 @@
             <th>Lead Name</th>
             <th>Service</th>
             <th>Status</th>
-            
         </tr>
-        @foreach ($persons as $person)
+        @foreach ($quotations as $quotation)
         @php
-         $new_array = explode(' ',$person->created_at) ;
+         $new_array = explode(' ',$quotation->created_at) ;
      @endphp
       
  
@@ -92,12 +94,12 @@
              
             <td>{{ $new_array[0]}}</td>
             <td>{{ $new_array[1]}}</td>
-            <td>{{ $person->name }}</td>
-            <td>{{ $person->service }}</td>
-            <td>{{ $person->state }}</td>
+            <td>{{ $quotation->name }}</td>
+            <td>{{ $quotation->service }}</td>
+            <td>{{ $quotation->quotation_state }}</td>
           
             <td>
-                <form action="{{ route('persons.destroy',$person->id) }}" method="POST">
+                <form action="{{ route('persons.destroy',$quotation->id) }}" method="POST">
    
                    
     
@@ -105,17 +107,22 @@
                     <div class="form-group">
 
                         <br>
+                     
+                        <a class="btn btn-primary" href="{{ route('quotation.edit',$quotation->id) }}">Update</a>
+                        <a class="btn btn-primary" href="{{ route('create_sales_order',$quotation->id) }}">Sale Order</a>
+                        <a class="btn btn-primary" href="{{ route('create_invoice_order',$quotation->id) }}"> Make Invoice</a>
+
+
+                        <br>
+                        <br>
+                        
+
+                        <a class="btn btn-primary" href="{{ route('show_invoices',$quotation->id) }}"> Show Invoice</a>
+                        <a class="btn btn-primary" href="{{ route('make_quotation_excel',$quotation->id) }}">Download</a>
+                        <br>
+                        <br>
                        
-                        <a class="btn btn-primary" href="{{ route('persons.edit',$person->id) }}">Edit</a>
-                        <br>
-                        <br>
-                        <a class="btn btn-primary" href="{{ route('user_follow_up_logs',$person->id) }}">Follow up</a>
 
-
-                        <br>
-                        <br>
-                        <a class="btn btn-primary" href="{{ route('complain_logs',$person->id) }}">complain</a>
-                        <a class="btn btn-primary" href="{{ route('quotation_index_id',$person->id) }}">Quotation</a>
 
                     </div>
                      
@@ -124,6 +131,15 @@
                     @method('DELETE')
       <!--
                     <button type="submit" onclick="return confirm('Sure Want Delete?')"  class="btn btn-danger">Delete</button>
+
+
+ <a class="btn btn-primary" href="{{ route('user_follow_up_logs',$quotation->id) }}">Follow up</a>
+
+
+                        <br>
+                        <br>
+                        <a class="btn btn-primary" href="{{ route('complain_logs',$quotation->id) }}">complain</a>
+
       -->
                 </form>
             </td>
@@ -133,6 +149,6 @@
     
   
     
-    {!! $persons->links() !!}
+    {!! $quotations->links() !!}
       
 @endsection

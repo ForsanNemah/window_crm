@@ -20,7 +20,7 @@ class empController extends Controller
      */
     public function index()
     {
-        $emps =User::where('user_type','1')->latest()->paginate(5);
+        $emps =User::latest()->paginate(5);
 
        // return $emps;
        
@@ -129,6 +129,9 @@ class empController extends Controller
      */
     public function store(StoreDemoRequest $request)
     {
+
+
+        //return  $data = $request->all();
         //
 
         $request->validate([
@@ -146,11 +149,12 @@ class empController extends Controller
 
         $data['password']=Hash::make($data['password']);
 
-        $data['user_type']="1";
-        User::create($data );
+       // $data['user_type']="1";
+         User::create($data );
        
-        return redirect()->route('emps.index')
-                        ->with('success','emp. created successfully.');
+       return redirect()->route('emps.index')
+                      ->with('success','emp. created successfully.');
+                        
     }
 
     /**
