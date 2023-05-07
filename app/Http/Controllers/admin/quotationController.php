@@ -36,7 +36,7 @@ class quotationController extends Controller
 
     public function show_all_sells_orders()
     {
-        $quotations_collection =DB::select('select quotation.*,persons.service,persons.name from quotation,persons where quotation.lead_id=persons.id  and quotation.lead_id=? and quotation.quotation_state=?  order by id DESC    ',[ Session::get('id'),"sell_order"]);
+        $quotations_collection =DB::select('select quotation.*,persons.service,persons.name from quotation,persons where quotation.lead_id=persons.id   and quotation.quotation_state="sell_order"  order by id DESC    ');
     
         $quotations=  collect( $quotations_collection )->paginate( 5 );
         //return $quotations; 
