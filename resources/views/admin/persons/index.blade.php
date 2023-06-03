@@ -61,7 +61,7 @@
 
 <br>
 
-<h>No={{count($persons)}}</h>
+<h>No={{$persons->total()}}</h>
 
 
 
