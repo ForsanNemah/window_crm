@@ -54,6 +54,7 @@
 
 
  
+<h>No={{$quotations->total()}}</h>
 
     <table class="table table-bordered">
         <tr>
