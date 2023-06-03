@@ -423,7 +423,7 @@ $r->state=$r2->state;
 
 
 
-
+$myq=$myq." order by persons.id desc ";
 
         $persons_collection =DB::select($myq);
         $persons=  collect($persons_collection)->paginate( 20 );
@@ -480,7 +480,7 @@ $r->state=$r2->state;
   
   
   
-  
+          $myq=$myq." order by quotation.id desc ";
           $quotations_collection =DB::select($myq);
           $quotations=  collect($quotations_collection)->paginate( 20 );
   
@@ -546,7 +546,7 @@ $r->state=$r2->state;
   
   
   
-
+          $myq=$myq." order by follow_ups.id desc ";
   
           $followups_collection =DB::select($myq);
           $follow_ups=  collect($followups_collection)->paginate( 20 );
