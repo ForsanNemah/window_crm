@@ -174,10 +174,10 @@
               <input type="number" name="tax" class="form-control"   >
 
 
-    
+    <!--
                 <strong>total price:</strong>
                 <input type="number" name="total_price" class="form-control"  >
-               
+    -->
                 <strong>start_date:</strong>
                 <input type="date" name="start_date" class="form-control"   >
 

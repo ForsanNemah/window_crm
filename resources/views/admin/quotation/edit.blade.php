@@ -181,7 +181,7 @@
 
     
                 <strong>total price:</strong>
-                <input type="number" value="{{$quotation->total_price}}" name="total_price" class="form-control"  >
+                <input type="number" value="{{$quotation->total_price}}" name="total_price" class="form-control" disabled  >
                
                 <strong>start_date:</strong>
                 <input type="date" value="{{$quotation->start_date}}" name="start_date" class="form-control"   >

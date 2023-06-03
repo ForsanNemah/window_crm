@@ -643,7 +643,7 @@ $data=$request->all();
 
 $data['user_id']= Auth::id();
 $data['lead_id']= Session::get('id');
-
+$data['total_price']=$data['price']*($data['tax']/100)+$data['price'];
 echo  Auth::id(). Session::get('id');
       
 
@@ -696,6 +696,20 @@ echo  Auth::id(). Session::get('id');
 
 
    $data=  $request->all();
+
+
+
+ 
+
+   $data['total_price']=$data['price']*($data['tax']/100)+$data['price'];
+
+
+
+
+
+
+
+
 
 //echo $data['customer_acceptance'];
 
