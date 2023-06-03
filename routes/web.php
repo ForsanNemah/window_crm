@@ -43,6 +43,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('follow_up',App\Http\Controllers\admin\follow_upController::class);
 
 
+ 
+    Route::resource('UsersReport',App\Http\Controllers\admin\UsersReportController::class);
+    Route::get('/UsersReport_id/{id}', [App\Http\Controllers\admin\UsersReportController::class, 'index_id'])->name('UsersReport_id');
+
+
+    Route::POST('/users_report_filter', [App\Http\Controllers\admin\UsersReportController::class, 'users_report_filter'])->name('users_report_filter');
+
 
 
 

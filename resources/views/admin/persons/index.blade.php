@@ -61,7 +61,7 @@
 
 <br>
 
-
+<h>No={{count($persons)}}</h>
 
 
 
@@ -77,6 +77,7 @@
             <th>Lead Name</th>
             <th>Service</th>
             <th>Status</th>
+            <th>User</th>
             
         </tr>
         @foreach ($persons as $person)
@@ -95,6 +96,7 @@
             <td>{{ $person->name }}</td>
             <td>{{ $person->service }}</td>
             <td>{{ $person->state }}</td>
+            <td>{{ $person->user_name }}</td>
           
             <td>
                 <form action="{{ route('persons.destroy',$person->id) }}" method="POST">
@@ -136,3 +138,7 @@
     {!! $persons->links() !!}
       
 @endsection
+
+
+
+

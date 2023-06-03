@@ -10,7 +10,8 @@ use App\Http\Requests\StoreDemoRequest;
 use App\Http\Requests\UpdateDemoRequest;
 use DB;
 use Auth;
-class PersonController extends Controller
+use Session;
+class UsersReportController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,6 +20,11 @@ class PersonController extends Controller
      */
     public function index()
     {
+
+
+        echo "wwe";
+
+        /*
         $persons =person::latest()->paginate(5);
        // return $persons; 
       
@@ -34,9 +40,138 @@ class PersonController extends Controller
 
         return view('admin.persons.index',compact('persons'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
+
+
+            */
+
+
+
+
+
+
+            return view('admin.users_reports.index',compact('persons') )
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+
+
+
+
+
+
+
             
     }
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function index_id($id)
+    {
+
+
+        //echo "wwe";
+        //echo $id;
+
+
+        //echo $id; 
+        Session::put('id', $id);
+
+        echo Session::get('id');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*
+        $persons =person::latest()->paginate(5);
+       // return $persons; 
+      
+
+       $persons_collection =DB::select('select persons.* ,users.name as user_name from persons,users where users.id=persons.user_id   ');
+    
+       $persons=  collect( $persons_collection )->paginate(10 );
+
+
+
+
+
+
+        return view('admin.persons.index',compact('persons'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+
+
+            */
+
+
+
+
+
+
+            //return view('admin.users_reports.index'  )
+            //->with('i', (request()->input('page', 1) - 1) * 5);
+
+
+
+
+
+
+            return view('admin.users_reports.index' )
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+
+            
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -102,7 +237,7 @@ else{
         
         
         
-    SELECT persons.*,users.name as user_name from persons,users  where users.department=? and users.id=persons.user_id order by id desc
+    SELECT persons.*,users.name as user_name from persons,users  where department=? and users.id=persons.user_id order by id desc
 
     
     ',[Auth::user()->department]);
@@ -246,152 +381,380 @@ $r->state=$r2->state;
 
 
 
-    public function persons_search_with_filter(StoreDemoRequest $request)
+    public function users_report_filter(StoreDemoRequest $request)
     {
 
-        $myq="select persons.*,users.name as user_name from persons,users where 1 ";
-
-//echo $request->from;
-//echo $request->to;
-//echo $request->service;
-//echo $request->state;
 
 
-if($request->filled('service')){
 
 
-    $myq=$myq." and  service='".$request->service."'";
+
+        if($request->action==1){
  
+ 
+          echo "no of leads ";
+         
+          $myq="select  persons.*,users.name as user_name  from persons,users  where persons.user_id=users.id and   persons.user_id= ".Session::get('id');
+
+   
 
 
 
-}
+
+
+
+
+
+
+
+
+          if($request->filled('from') and $request->filled('to')   ){
+
+
+            $myq=$myq." and persons.created_at between '".$request->from."' and '".$request->to."'   ";  
+         
+        
+        
+        
+        }
+        
+
+
+
+
+
+
+
+        $persons_collection =DB::select($myq);
+        $persons=  collect($persons_collection)->paginate( 20 );
+
+          return view('admin.persons.index',compact('persons'))
+          ->with('i', (request()->input('page', 1) - 1) * 20);
+        
+        
+        }
+
+
+        if($request->action==2){
+ 
+ 
+            echo "no of quotations ";
+           
+          
+
+
+
+
+
+
+
+           
+         
+            $myq="select quotation.*,persons.service,persons.name from quotation,persons where quotation.lead_id=persons.id        and persons.user_id= ".Session::get('id');
+  
+     
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+            if($request->filled('from') and $request->filled('to')   ){
+  
+  
+              $myq=$myq." and quotation.created_at between '".$request->from."' and '".$request->to."'   ";  
+           
+          
+          
+          
+          }
+          
+  
+  
+  
+  
+  
+  
+  
+          $quotations_collection =DB::select($myq);
+          $quotations=  collect($quotations_collection)->paginate( 20 );
+  
+          return view('admin.quotation.index',compact('quotations'))->with('i', (request()->input('page', 1) - 1) * 20);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+          
+          }
+
+
+
+
+
+
+          if($request->action==3){
+ 
+ 
+        
+           
+          
+            echo "no of leads ";
+         
+            $myq="select * from follow_ups where user_id= ".Session::get('id');
+  
+     
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+            if($request->filled('from') and $request->filled('to')   ){
+  
+  
+              $myq=$myq." and follow_ups.created_at between '".$request->from."' and '".$request->to."'   ";  
+           
+          
+          
+          
+          }
+          
+  
+  
+  
+  
+  
+
+  
+          $followups_collection =DB::select($myq);
+          $follow_ups=  collect($followups_collection)->paginate( 20 );
+  
+//echo count( $followups);
+          
+            return view('admin.users_reports.user_followups',compact('follow_ups'))
+            ->with('i', (request()->input('page', 1) - 1) * 20);
+        
+
+            
+
+        
+          
+          
+          }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          if($request->action==4){
+ 
+ 
+        
+           
+          
+            echo "no of leads ";
+         
+            $myq="select * from follow_ups where 	state='sold' and user_id= ".Session::get('id');
+  
+     
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+            if($request->filled('from') and $request->filled('to')   ){
+  
+  
+              $myq=$myq." and follow_ups.created_at between '".$request->from."' and '".$request->to."'   ";  
+           
+          
+          
+          
+          }
+          
+  
+  
+  
+  
+  
+
+  
+          $followups_collection =DB::select($myq);
+          $follow_ups=  collect($followups_collection)->paginate( 20 );
+  
+//echo count( $followups);
+          
+            return view('admin.users_reports.user_followups',compact('follow_ups'))
+            ->with('i', (request()->input('page', 1) - 1) * 20);
+        
+
+            
+
+        
+          
+          
+          }
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       // $myq="select persons.*,quotation.*  from persons,quotation where  persons.id=quotation.lead_id and persons.user_id= ".Session::get('id');
+
+
+
+
+
 
 /*
-if($request->filled('state')){
+echo $request->to;
+echo $request->from;
+echo $request->action;
+*/
 
 
-    $myq=$myq." where state=".$request->service;
+//echo  $myq;
+
+//$result =DB::select($myq);
+//return $result;
+
+
+/*
+
+
+ echo "wwee";
+
+
+
+ $myq="select persons.*,users.name as user_name from persons,users where 1 ";
+
+ //echo $request->from;
+ //echo $request->to;
+ //echo $request->service;
+ //echo $request->state;
+ 
+ 
+ if($request->filled('service')){
+ 
+ 
+     $myq=$myq." and  service='".$request->service."'";
+  
+ 
+ 
+ 
+ }
+ 
+ /*
+ if($request->filled('state')){
+ 
+ 
+     $myq=$myq." where state=".$request->service;
+  
+ 
+ 
+ 
+ 
+ }
+ */
+ 
+ 
+ 
+ 
+ /*
+ if($request->filled('from') and $request->filled('to')   ){
+ 
+ 
+     $myq=$myq." and created_at between '".$request->from."' and '".$request->to."'   ";  
+  
+ 
+ 
+ 
+ }
  
 
 
 
 
-}
+
+
+
 */
 
 
 
-
-
-if($request->filled('from') and $request->filled('to')   ){
-
-
-    $myq=$myq." and created_at between '".$request->from."' and '".$request->to."'   ";  
- 
-
-
-
-}
-
-
-
-
-
-
-if($request->filled('state')){
-
-
-    $myq=$myq." and state = '".$request->state."'";  
- 
-
-
-
-}
-
-
-if($request->filled('user_id')){
-
-
-    $myq=$myq." and users.id = '".$request->user_id."'";  
- 
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-echo  $myq;
-
-if(Auth::user()->user_type=='1'){
-
-    $myq=$myq." and  department='". Auth::user()->department."'";
-}
-
-
-
-
-$myq=$myq."and users.id=persons.user_id order by id desc";
-
-//$leads =DB::select('select * from  persons where created_at BETWEEN ? AND ? ',["'".$request->from."'","'".$request->to."'"]);
-//return  $leads; 
-
-$persons =DB::select($myq);
-
-
-
-foreach($persons as $r){
-    // echo $r->id."<br>";
-
-    $r->state="";
-     $fu =DB::select('select id,lead_id,state from follow_ups where lead_id=? and state=? ORDER by id DESC LIMIT 1',[ $r->id
-    
-    
-    ,$request->state
-    
-    ]);
-
-     foreach($fu as $r2){
-//echo $r2->state;
-
-$r->state=$r2->state;
-
-     }
-
-
- }
-
-
-
-
-
-
-
-
-
-
-
-
- $users =User::get();
-
-//return $persons; 
- 
-
-return view('admin.reports.index',compact('persons','users'))
-->with('success','person created successfully.');
 
 
     }

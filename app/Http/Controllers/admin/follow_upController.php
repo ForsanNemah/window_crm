@@ -100,7 +100,7 @@ return view('admin.follow_up.index',compact('follow_ups'));
 
 
 
-        $person =DB::select('select * from persons where id=?',[  Session::get('id')]);
+        $person =DB::select('select persons.*,users.name as user_name from persons,users where persons.id=? and users.id=persons.user_id',[  Session::get('id')]);
 
 
 

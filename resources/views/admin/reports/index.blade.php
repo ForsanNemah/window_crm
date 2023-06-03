@@ -63,8 +63,9 @@
             <strong>Service:</strong>
            
             <select name="service"   >
-             
-                <option value="w sender">window sender</option>
+
+                <option value=""></option>
+                <option value="w sender">w sender</option>
                 <option value="social media ads">social media ads</option>
                 <option value="social media mangment">social media manegment</option>
                 <option value="makeing website">makeing website</option>
@@ -74,8 +75,7 @@
 
 
 
-<br>
-<br>
+ 
 
 
               <strong>State:</strong>
@@ -100,6 +100,49 @@
           
                 
                 </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+                <strong>User:</strong>
+                <select name="user_id"   id="user_name_id"  >
+    
+                      
+                    <option value=""></option>
+                    @foreach($users as $user )
+    <option value="{{ $user->id }}">{{ $user->name }}</option>
+  @endforeach
+  
+  
+  
+  
+                  
+                  </select>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -149,6 +192,11 @@
             <th>Lead Name</th>
             <th>Service</th>
             <th>Status</th>
+            <th>User</th>
+            <th>w1</th>
+            <th>w2</th>
+            <th>c1</th>
+            <th>c2</th>
         </tr>
         @php
         $i=1; 
@@ -172,6 +220,7 @@
      <td>{{ $person->name }}</td>
      <td>{{ $person->service }}</td>
      <td>{{ $person->state }}</td>
+     <td>{{ $person->user_name }}</td>
 
 
    <td>
@@ -209,18 +258,7 @@ https://api.whatsapp.com/send/?phone={{$person->phn}}&text&type=phone_number&app
 
 
 
-    <td>
   
-        <a href="
-        
-        https://api.whatsapp.com/send/?phone={{$person->phn2}}&text&type=phone_number&app_absent=0
-        
-        
-        ">
-         
-        </a>
-         
-        </td>
 
 
 

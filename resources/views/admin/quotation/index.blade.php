@@ -70,7 +70,7 @@
 
 
  
-
+<h>No={{count($quotations)}}</h>
     <table class="table table-bordered">
         <tr>
             <th>No</th>

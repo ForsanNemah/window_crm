@@ -65,7 +65,7 @@
     
                     <a class="btn btn-primary" href="{{ route('emps.edit',$emp->id) }}">Edit</a>
                
- 
+                    <a class="btn btn-primary" href="{{ route('UsersReport_id',$emp->id) }}">Report</a>
                     @csrf
                     @method('DELETE')
                     
@@ -73,6 +73,7 @@
                     <button type="submit" onclick="return confirm('Sure Want Delete?')"  class="btn btn-danger">Delete</button>
                     
                     <br>
+
  
                 </form>
             </td>

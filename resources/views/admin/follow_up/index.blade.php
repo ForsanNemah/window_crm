@@ -68,6 +68,7 @@
         <th scope="col">Time to Call</th>
         <th scope="col">Note</th>
         <th scope="col">Refferred to</th>
+        <th scope="col">User</th>
        
    
       </tr>
@@ -83,6 +84,7 @@
           <td> {{$item->time_to_call}}</td>
           <td> {{$item->note}}</td>
           <td> {{$item->department}}</td>
+          <td> {{$item->user_name}}</td>
          
          
       
