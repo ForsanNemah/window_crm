@@ -19,11 +19,11 @@ class PersonController extends Controller
      */
     public function index()
     {
-        $persons =person::latest()->paginate(5);
+        //$persons =person::latest()->paginate(10);
        // return $persons; 
       
 
-       $persons_collection =DB::select('select persons.* ,users.name as user_name from persons,users where users.id=persons.user_id   ');
+       $persons_collection =DB::select('select persons.* ,users.name as user_name from persons,users where users.id=persons.user_id  order by persons.id desc  ');
     
        $persons=  collect( $persons_collection )->paginate(10 );
 
