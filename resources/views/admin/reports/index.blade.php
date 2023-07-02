@@ -25,6 +25,20 @@
 
 
                 <a class="btn btn-success" href="{{ route('person_make_excel') }}"> Export to Excel</a>
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
             </div>
         </div>
     </div>
@@ -65,11 +79,10 @@
             <select name="service"   >
 
                 <option value=""></option>
-                <option value="w sender">w sender</option>
-                <option value="social media ads">social media ads</option>
-                <option value="social media mangment">social media manegment</option>
-                <option value="makeing website">makeing website</option>
-                <option value="makeing website">makeing mobile apps </option>
+
+                @foreach($services as $service )
+                <option value="{{ $service->name }}">{{ $service->name }}</option>
+              @endforeach
               
               </select>
 
@@ -78,21 +91,15 @@
  
 
 
-              <strong>State:</strong>
+              <strong>Status:</strong>
               <select name="state"     id="state_id"  >
           
                 <option value=""></option>
-                  <option value="{{config('app.vi')}}">{{config('app.vi')}}</option>
-                  <option value="{{config('app.vis')}}">{{config('app.vis')}}</option>
-                  <option value="{{config('app.ap')}}">{{config('app.ap')}}</option>
-                  <option value="{{config('app.hena')}}">{{config('app.hena')}}</option>
-                  <option value="{{config('app.nr')}}">{{config('app.nr')}}</option>
-                  <option value="{{config('app.wfa')}}">{{config('app.wfa')}}</option>
-                  <option value="{{config('app.fu')}}">{{config('app.fu')}}</option>
-                  <option value="{{config('app.lost')}}">{{config('app.lost')}}</option>
-                  <option value="{{config('app.sold')}}">{{config('app.sold')}}</option>
-                  <option value="{{config('app.res')}}">{{config('app.res')}}</option>
-                  
+
+                 
+                @foreach($statuses as $status )
+                <option value="{{ $status->name }}">{{ $status->name }}</option>
+              @endforeach
           
           
           
@@ -306,18 +313,23 @@ https://api.whatsapp.com/send/?phone={{$person->phn}}&text&type=phone_number&app
 
           
 
-           <a class="btn btn-primary" href="{{ route('persons.edit',$person->id) }}">Edit</a>
+    
            
 
+<td>
+    <a class="btn btn-primary" href="{{ route('persons.edit',$person->id) }}">Edit</a>
 
+</td>
 
-           <div class="form-group">
-               <br>
-               <a class="btn btn-primary" href="{{ route('user_follow_up_logs',$person->id) }}">Follow up</a>
-               <br>
-               <br>
-               <a class="btn btn-primary" href="{{ route('complain_logs',$person->id) }}">complain</a>
-           </div>
+<td>
+    <a class="btn btn-primary" href="{{ route('user_follow_up_logs',$person->id) }}">Follow</a>
+</td>
+
+<td>
+
+    <a class="btn btn-primary" href="{{ route('complain_logs',$person->id) }}">complain</a>
+</td>
+ 
 
            
             
@@ -344,3 +356,6 @@ https://api.whatsapp.com/send/?phone={{$person->phn}}&text&type=phone_number&app
       
       
 @endsection
+
+
+

@@ -61,6 +61,39 @@
 
 <br>
 
+
+
+
+
+
+
+
+
+ 
+
+<form action="{{ route('persons_search_by_name') }}" method="GET">
+    @csrf
+
+    <div class="input-group">
+        <input type="text" class="form-control rounded" placeholder="Search by Name" aria-label="Search" aria-describedby="search-addon" name="search_key" />
+        &nbsp      &nbsp
+        <button type="submit" class="btn btn-outline-primary">search</button>
+       
+      </div>
+
+</form>
+
+<br>
+
+
+
+
+
+
+
+
+
+
 <h>No={{$persons->total()}}</h>
 
 
@@ -75,6 +108,7 @@
             <th>Date</th>
             <th>Time</th>
             <th>Lead Name</th>
+            <th>Phone</th>
             <th>Service</th>
             <th>Status</th>
             <th>User</th>
@@ -94,11 +128,12 @@
             <td>{{ $new_array[0]}}</td>
             <td>{{ $new_array[1]}}</td>
             <td>{{ $person->name }}</td>
+            <td>{{ $person->phn }}</td>
             <td>{{ $person->service }}</td>
             <td>{{ $person->state }}</td>
             <td>{{ $person->user_name }}</td>
           
-            <td>
+            <td >
                 <form action="{{ route('persons.destroy',$person->id) }}" method="POST">
    
                    
@@ -106,18 +141,25 @@
                  
                     <div class="form-group">
 
-                        <br>
-                       
+                      
+                       <td>
                         <a class="btn btn-primary" href="{{ route('persons.edit',$person->id) }}">Edit</a>
-                        <br>
-                        <br>
-                        <a class="btn btn-primary" href="{{ route('user_follow_up_logs',$person->id) }}">Follow up</a>
+                       </td>
+
+                       <td>
+                        <a class="btn btn-primary" href="{{ route('user_follow_up_logs',$person->id) }}">Follow</a>
+                       </td>
 
 
-                        <br>
-                        <br>
+                       <td>
                         <a class="btn btn-primary" href="{{ route('complain_logs',$person->id) }}">complain</a>
+                       </td>
+            
+                       <td>
+
                         <a class="btn btn-primary" href="{{ route('quotation_index_id',$person->id) }}">Quotation</a>
+                       </td>
+
 
                     </div>
                      
@@ -139,6 +181,10 @@
       
 @endsection
 
+
+
+
+ 
 
 
 

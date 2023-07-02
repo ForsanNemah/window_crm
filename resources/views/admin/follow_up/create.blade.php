@@ -52,19 +52,13 @@
                 <select name="state" onchange="gsi();"   id="state_id"  >
 
                     
-                    <option value="{{config('app.vi')}}">{{config('app.vi')}}</option>
-                    <option value="{{config('app.vis')}}">{{config('app.vis')}}</option>
-                    <option value="{{config('app.ap')}}">{{config('app.ap')}}</option>
-                    <option value="{{config('app.hena')}}">{{config('app.hena')}}</option>
-                    <option value="{{config('app.nr')}}">{{config('app.nr')}}</option>
-                    <option value="{{config('app.wfa')}}">{{config('app.wfa')}}</option>
-                    <option value="{{config('app.fu')}}">{{config('app.fu')}}</option>
-                    <option value="{{config('app.lost')}}">{{config('app.lost')}}</option>
-                    <option value="{{config('app.sold')}}">{{config('app.sold')}}</option>
-                    <option value="{{config('app.res')}}">{{config('app.res')}}</option>
+              
                     
 
-         
+                    @foreach($statuses as $status )
+                    <option value="{{ $status->name }}">{{ $status->name }}</option>
+                  @endforeach
+              
 
  
   
@@ -120,7 +114,7 @@
 
 <script>
 
- 
+ /*
 window.onload = function() {
   
    // alert("wwe");
@@ -154,6 +148,6 @@ var element = document.getElementById("v_id");
         */
 }
 
-
+*/
  
 </script>

@@ -8,6 +8,7 @@ use App\Models\emp;
 use App\Models\User;
 use App\Models\follow_up;
 use App\Models\department;
+use App\Models\status;
 use App\Http\Requests\StoreDemoRequest;
 use App\Http\Requests\UpdateDemoRequest;
 use Illuminate\Support\Facades\Hash;
@@ -287,9 +288,9 @@ return view('admin.follow_up.index',compact('follow_ups'));
         //
 
        $departments =department::get();
-      
-       // return view('admin.persons.create',compact('departments','sex'));
-       return view('admin.follow_up.create',compact('departments'));
+       $statuses =DB::select('SELECT  * from statuses');
+     
+       return view('admin.follow_up.create',compact('departments','statuses'));
     }
 
     /**

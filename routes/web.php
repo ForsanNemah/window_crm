@@ -1,9 +1,17 @@
 <?php
 
 
- 
 
+
+
+
+ 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\HelloMail;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,16 +33,70 @@ Route::resource('demo',App\Http\Controllers\DemoController::class);
 
 
 
+
+
+
+
+
+
+Route::get('/se', function () {
+    echo "wwe";
+
+
+    $mailData = [
+        'title' => 'Mail from ItSolutionStuff.com',
+        'body' => 'This is for testing email using smtp.'
+    ];
+
+
+
+
+    Mail::to('myproeng@gmail.com')->send(new HelloMail($mailData));
+
+
+});
+
+
+
+
+
+
+
+
+
 Route::group(['middleware' => ['auth']], function () { 
 
 
     Route::get('/', function () {
         return view('home');
-    });
+    }
+
+
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     
     Route::resource('persons',App\Http\Controllers\admin\PersonController::class);
     Route::get('/persons_search', [App\Http\Controllers\admin\PersonController::class, 'persons_search'])->name('persons_search');
+
+
+    Route::get('/persons_search_by_name', [App\Http\Controllers\admin\PersonController::class, 'persons_search_by_name'])->name('persons_search_by_name');
+
+
 
     Route::resource('departments',App\Http\Controllers\admin\departmentController::class);
     Route::resource('emps',App\Http\Controllers\admin\empController::class);

@@ -1,15 +1,27 @@
 <?php
 
 namespace App\Http\Controllers\admin;
+set_time_limit(0);
 use App\Http\Controllers\Controller;
 
 use App\Models\person;
 use App\Models\User;
 use App\Models\department;
+use App\Models\business_type;
+use App\Models\service;
+use App\Models\source;
+use App\Models\status;
 use App\Http\Requests\StoreDemoRequest;
 use App\Http\Requests\UpdateDemoRequest;
 use DB;
 use Auth;
+use Illuminate\Http\Request;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use Session;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\HelloMail;
+
 class PersonController extends Controller
 {
     /**
@@ -42,9 +54,118 @@ class PersonController extends Controller
 
     public function make_excel()
     {
-        $persons =person::get();
-        header("Content-Type: application/vnd.ms-excel");
+        //echo "wwe".$request->get(Items);
+        //return  $request["Items"];
+        //Request $request
 
+
+echo "wwe";
+
+
+
+
+
+ 
+$spreadsheet = new Spreadsheet();
+
+//add some data in excel cells
+$spreadsheet->setActiveSheetIndex(0)
+ ->setCellValue('A1', 'ID')
+ ->setCellValue('B1', 'NAME')
+ ->setCellValue('C1', 'SERVICE')
+ ->setCellValue('D1', 'PHONE');
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+$i=2;
+ foreach(Session::get('persons_value') as $r){
+
+    echo $r->id;
+    $spreadsheet->setActiveSheetIndex(0)
+    ->setCellValue('A'.$i, $r->id)
+    ->setCellValue('B'.$i, $r->name)
+    ->setCellValue('C'.$i, $r->service)
+    ->setCellValue('D'.$i, $r->phn);
+   
+    $i++;
+    }
+
+
+ 
+
+
+
+
+
+
+
+
+
+//set style for A1,B1,C1 cells
+$cell_st =[
+ 'font' =>['bold' => true],
+ 'alignment' =>['horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER],
+ 'borders'=>['bottom' =>['style'=> \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM]]
+];
+$spreadsheet->getActiveSheet()->getStyle('A1:C1')->applyFromArray($cell_st);
+
+//set columns width
+$spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(16);
+$spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(18);
+
+$spreadsheet->getActiveSheet()->setTitle('Simple'); //set a title for Worksheet
+
+//make object of the Xlsx class to save the excel file
+$writer = new Xlsx($spreadsheet);
+$fxls ='excel-file_1.xlsx';
+$writer->save($fxls);
+
+echo "done";
+
+
+
+
+
+
+ob_end_clean();
+
+$filePath =  "excel-file_1.xlsx";
+$headers = ['Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet/pdf'];
+$fileName = 'excel-file_1.xlsx';
+
+return response()->download($filePath, $fileName, $headers);
+ob_end_clean();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*
+        $persons =person::get();
+        header( "Content-type: application/vnd.ms-excel; charset=UTF-8" );
+        echo pack("CCC",0xef,0xbb,0xbf);
         echo ' Name' . "\t" . 'service' . "\t" . 'Phone' . "\n";
 
         foreach($persons as $r){
@@ -62,7 +183,7 @@ echo $r->name . "\t" . $r->service. "\t" .  $r->phn . "\n";
         header("Content-disposition: attachment; filename=full_leads_report.xls");
       // return $persons; 
       
-
+*/
             
     }
 
@@ -83,6 +204,15 @@ echo $r->name . "\t" . $r->service. "\t" .  $r->phn . "\n";
 
 
 
+        $services =DB::select('SELECT  * from services');
+        $statuses =DB::select('SELECT  * from statuses');
+
+
+
+
+
+
+
 
 if(Auth::user()->user_type=='admin'){
 
@@ -90,7 +220,7 @@ if(Auth::user()->user_type=='admin'){
         
         
         
-    SELECT persons.*,users.name as user_name from persons,users  where   users.id=persons.user_id order by id desc
+    SELECT persons.*,users.name as user_name from persons,users  where   users.id=persons.user_id order by id desc LIMIT 100
 
     
     ');
@@ -154,7 +284,7 @@ $r->state=$r2->state;
 
 
       
-      return view('admin.reports.index',compact('persons','users'))
+      return view('admin.reports.index',compact('persons','users','services','statuses'))
           ->with('success','person created successfully.');
           
 
@@ -192,7 +322,7 @@ $r->state=$r2->state;
                         ->get();
                 }
             }]
-        ])->paginate(6);
+        ])->paginate(100);
         
         
         
@@ -246,8 +376,129 @@ $r->state=$r2->state;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function persons_search_by_name(StoreDemoRequest $request)
+    {
+
+        $persons =person::where([
+            ['name', '!=', Null],
+            [function ($query) use ($request) {
+                if (($s = $request->search_key)) {
+                    $query->orWhere('name', 'LIKE', '%' . $s . '%')
+                       
+                        ->get();
+                }
+            }]
+        ])->paginate(100);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        //latest()->paginate(5);
+        // return $persons; 
+       
+         return view('admin.persons.index',compact('persons'))
+             ->with('i', (request()->input('page', 1) - 1) * 5);
+
+        /*
+        echo  "search called".$request->search_key;
+        
+        $persons =person::
+
+        
+        
+        where([
+            ['name', '!=', Null],
+            [function ($query) use ($request) {
+                if (($s = $request->search_key)) {
+                    $query->orWhere('name', 'LIKE', '%' . $s . '%')
+                      
+                        ->get();
+                }
+            }]
+        ])->latest()->paginate(5);
+       // return $persons; 
+      
+        return view('admin.persons.index',compact('persons'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+            
+           */ 
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function persons_search_with_filter(StoreDemoRequest $request)
     {
+
+
+        $services =DB::select('SELECT  * from services');
+        $statuses =DB::select('SELECT  * from statuses');
+
+
+
+
 
         $myq="select persons.*,users.name as user_name from persons,users where 1 ";
 
@@ -260,7 +511,7 @@ $r->state=$r2->state;
 if($request->filled('service')){
 
 
-    $myq=$myq." and  service='".$request->service."'";
+    $myq=$myq." and  persons.service='".$request->service."'";
  
 
 
@@ -271,7 +522,7 @@ if($request->filled('service')){
 if($request->filled('state')){
 
 
-    $myq=$myq." where state=".$request->service;
+    $myq=$myq." where persons.state=".$request->service;
  
 
 
@@ -287,7 +538,7 @@ if($request->filled('state')){
 if($request->filled('from') and $request->filled('to')   ){
 
 
-    $myq=$myq." and created_at between '".$request->from."' and '".$request->to."'   ";  
+    $myq=$myq." and persons.created_at between '".$request->from."' and '".$request->to."'   ";  
  
 
 
@@ -302,7 +553,7 @@ if($request->filled('from') and $request->filled('to')   ){
 if($request->filled('state')){
 
 
-    $myq=$myq." and state = '".$request->state."'";  
+    $myq=$myq." and persons.state = '".$request->state."'";  
  
 
 
@@ -338,7 +589,7 @@ echo  $myq;
 
 if(Auth::user()->user_type=='1'){
 
-    $myq=$myq." and  department='". Auth::user()->department."'";
+    $myq=$myq." and  persons.department='". Auth::user()->department."'";
 }
 
 
@@ -389,8 +640,18 @@ $r->state=$r2->state;
 
 //return $persons; 
  
+Session::put('persons_value', $persons);
 
-return view('admin.reports.index',compact('persons','users'))
+/*
+foreach(Session::get('persons') as $r){
+
+echo $r->id;
+
+}
+*/
+//return Session::get('persons');
+
+return view('admin.reports.index',compact('persons','users','services','statuses'))
 ->with('success','person created successfully.');
 
 
@@ -412,9 +673,14 @@ return view('admin.reports.index',compact('persons','users'))
         //
 
         $departments =department::get();
-      
-       // return view('admin.persons.create',compact('departments','sex'));
-       return view('admin.persons.create',compact('departments'));
+        
+        $business_types =business_type::get();
+
+        $services =service::get();
+
+        $sources =source::get();
+       
+       return view('admin.persons.create',compact('departments','business_types','services','sources'));
     }
 
     /**
@@ -425,8 +691,26 @@ return view('admin.reports.index',compact('persons','users'))
      */
     public function store(StoreDemoRequest $request)
     {
-        //
 
+
+       
+
+      
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+        
         $request->validate([
             'name' => 'required',
             'phn' => 'required',
@@ -443,10 +727,28 @@ return view('admin.reports.index',compact('persons','users'))
         
  
         person::create($data);
+
+
+        PersonController::get_department_emails($request);
        
         return redirect()->route('persons.index')
                         ->with('success','person created successfully.');
+
+                        
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Display the specified resource.
@@ -514,4 +816,69 @@ return view('admin.reports.index',compact('persons','users'))
         return redirect()->route('persons.index')
                         ->with('success','person deleted successfully');
     }
+
+
+
+
+
+
+
+
+    public function get_department_emails(Request $request)
+
+    {
+
+
+        echo $request['name'];
+        $body="new customer added "." service:".$request['service']." note: ".$request['note'];
+
+        $emails =DB::select('SELECT  * from users');
+
+echo "wwe";
+
+
+
+
+$mailData = [
+    'title' => 'New Customer',
+    'body' =>  $body
+];
+
+
+
+
+
+
+
+
+foreach($emails as $r){
+
+   // echo $r->email."<br>";
+
+   Mail::to($r->email)->send(new HelloMail($mailData));
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+return;
+       // return $emails['id'];
+
+    }
+
 }
