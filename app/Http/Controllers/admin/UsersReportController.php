@@ -426,10 +426,10 @@ $r->state=$r2->state;
 $myq=$myq." order by persons.id desc ";
 
         $persons_collection =DB::select($myq);
-        $persons=  collect($persons_collection)->paginate( 20 );
-
-          return view('admin.persons.index',compact('persons'))
-          ->with('i', (request()->input('page', 1) - 1) * 20);
+        //$persons=  collect($persons_collection)->paginate( 20 );
+        $persons=$persons_collection;
+          return view('admin.users_reports.user_leads',compact('persons'))
+          ->with('done');
         
         
         }
@@ -549,12 +549,12 @@ $myq=$myq." order by persons.id desc ";
           $myq=$myq." order by follow_ups.id desc ";
   
           $followups_collection =DB::select($myq);
-          $follow_ups=  collect($followups_collection)->paginate( 20 );
-  
+          //$follow_ups=  collect($followups_collection)->paginate( 20 );
+          $follow_ups=$followups_collection;
 //echo count( $followups);
           
             return view('admin.users_reports.user_followups',compact('follow_ups'))
-            ->with('i', (request()->input('page', 1) - 1) * 20);
+            ->with('done');
         
 
             
@@ -638,8 +638,11 @@ $myq=$myq." order by persons.id desc ";
   
 //echo count( $followups);
           
+$follow_ups=$followups_collection;
+//echo count( $followups);
+          
             return view('admin.users_reports.user_followups',compact('follow_ups'))
-            ->with('i', (request()->input('page', 1) - 1) * 20);
+            ->with('done');
         
 
             

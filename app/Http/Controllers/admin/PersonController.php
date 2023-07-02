@@ -45,7 +45,7 @@ class PersonController extends Controller
 
 
         return view('admin.persons.index',compact('persons'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            ->with('i', (request()->input('page', 1) - 1) * 10);
             
     }
     
