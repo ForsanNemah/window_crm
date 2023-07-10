@@ -59,6 +59,34 @@
             <strong>Name:</strong>
               <input type="text" name="name" class="form-control" value="{{$person->name}}"   required>
     
+
+
+<br>
+              <strong>Business Type:</strong>
+              <br>
+              
+              <select name="business_type"   id="business_type_id"  >
+          
+                <option value="{{$person->business_type}}">{{$old_business_type}}</option>
+          
+                  @foreach($business_types as $business_type )
+          <option value="{{ $business_type->id }}">{{ $business_type->name }}</option>
+          @endforeach
+          
+          
+          
+          
+                
+                </select>
+          
+
+
+
+<br>
+<br>
+
+
+
               <strong>Phone Number:</strong>
               <input type="number" name="phn" class="form-control" value="{{$person->phn}}" required >
     
@@ -113,6 +141,16 @@
     <br>
     <br>
     
+
+   
+
+
+
+
+
+
+
+
     
               <strong>City:</strong>
               <input type="text" name="city" class="form-control" value="{{$person->city}}"  >
@@ -127,11 +165,11 @@
                    
               <select name="service"  >
                 <option value="{{$person->service}}">{{$person->service}}</option>
-                  <option value="w sender">window sender</option>
-                  <option value="social media ads">social media ads</option>
-                  <option value="social media mangment">social media manegment</option>
-                  <option value="makeing website">makeing website</option>
-                  <option value="makeing website">makeing mobile apps </option>
+
+
+                @foreach($services as $service )
+               <option value="{{ $service->name }}">{{ $service->name }}</option>
+             @endforeach
                 
                 </select>
     
@@ -142,15 +180,13 @@
                 <strong>Source:</strong>
                 <select name="source"  >
                     <option value="{{$person->source}}">{{$person->source}}</option>
-                    <option value="Facebook">Facebook</option>
-                    <option value="Instgram">Instgram</option>
-                    <option value="Youtube">Youtube</option>
-                    <option value="Linkedin">Linkedin</option>
-                    <option value="SMS">SMS</option>
-                    <option value="Snap">Snap</option>
-                    <option value="Snap">Email</option>
-                    <option value="call">call</option>
-                    <option value="Other">Other</option>
+              
+
+
+                    @foreach($sources as $source )
+                    <option value="{{ $source->name }}">{{ $source->name }}</option>
+                  @endforeach
+
                   
                   </select>
     

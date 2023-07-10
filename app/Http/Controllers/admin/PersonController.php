@@ -769,10 +769,49 @@ return view('admin.reports.index',compact('persons','users','services','statuses
      */
     public function edit(person $person)
     {
+
+        echo "".$person->id;
+
+        $business_types =DB::select('SELECT  name from business_types where id=?',[$person->business_type]);
+      
+
+       // $old_business_type =$business_type['name'];
+          $old_business_type;
+ 
+
+foreach ($business_types as $business_type) {
+     
+    $old_business_type=$business_type->name;
+ 
+}
+
+
+
+
+if(!isset($old_business_type)){
+    $old_business_type="";
+
+}
+
+
+
+
         //
        // echo $person;
+
+       
        $departments =department::get();
-       return view('admin.persons.edit',compact('person','departments'));
+      
+       $business_types =business_type::get();
+
+       $services =service::get();
+
+       $sources =source::get();
+
+
+       return view('admin.persons.edit',compact('person','departments','services','sources','business_types','old_business_type'));
+
+       
     }
 
     /**
